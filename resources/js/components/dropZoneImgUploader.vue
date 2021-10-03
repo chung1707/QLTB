@@ -26,9 +26,9 @@ export default {
             thumbnailWidth: 150,
             acceptedFiles: ".jpeg,.jpg,.png,.gif,.jfif",
             addRemoveLinks: true,
-            maxFilesize: 3,
+            maxFilesize: 1,
             paralleUploaded: 5,
-            maxFiles: 5,
+            maxFiles: 1 ,
             uploadMultiple: true,
         },
         fileNames: [],
@@ -45,6 +45,7 @@ export default {
                     this.fileNames.push(file);
                 });
                 this.setThumbnails(this.fileNames);
+                this.fileNames = [];
         },
     }
 }

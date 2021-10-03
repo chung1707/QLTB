@@ -13,7 +13,7 @@ class CreateExportBillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('export_bills', function (Blueprint $table) {
+        Schema::create('exportbills', function (Blueprint $table) {
             $table->id();
             $table->string('transaction_id');
             $table->foreignId('area_id')->constrained();
@@ -31,6 +31,6 @@ class CreateExportBillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('export_bills');
+        Schema::dropIfExists('exportbills');
     }
 }

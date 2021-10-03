@@ -13,12 +13,12 @@ class EquipmentSellBill extends Migration
      */
     public function up()
     {
-        Schema::create('equipment_sell_bills', function (Blueprint $table) {
+        Schema::create('equipment_sellbills', function (Blueprint $table) {
             $table->id();
             $table->foreignId('equipment_id')->constrained();
             $table->integer('quantity');
             $table->float('price');
-            $table->foreignId('sell_bill_id')->constrained();
+            $table->foreignId('sellbill_id')->constrained();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class EquipmentSellBill extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipment_sell_bills');
+        Schema::dropIfExists('equipment_sellbills');
     }
 }

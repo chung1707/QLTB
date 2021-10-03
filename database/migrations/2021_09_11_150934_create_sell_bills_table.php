@@ -13,10 +13,10 @@ class CreateSellBillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sell_bills', function (Blueprint $table) {
+        Schema::create('sellbills', function (Blueprint $table) {
             $table->id();
             $table->string('transaction_id');
-            $table->float('totalPrice');
+            $table->double('totalPrice');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateSellBillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sell_bills');
+        Schema::dropIfExists('sellbills');
     }
 }

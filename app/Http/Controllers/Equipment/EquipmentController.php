@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Equipment;
 use App\Models\AppConst;
 use App\Models\Equipment;
 use Illuminate\Http\Request;
+use App\Events\EquipmentsCreated;
 use App\Http\Controllers\Controller;
 
 class EquipmentController extends Controller
@@ -43,9 +44,28 @@ class EquipmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $equipments = $request->equipments;
+            foreach ($equipments as $item) {
+                $equipment = Equipment::where('device_code', '=', $item['device_code'])->first();
+                if($equipment){
+                    $equipment->quantity += $item['quantity'];
+                    $equipment->update();
+                }else{
+                    $equipment = new Equipment;
+                    $equipment->fill($item);
+                    if(isset($item['thumbnails'][0])){
+                        $equipment->thumbnail = $item['thumbnails'][0];
+                    }
+                    $equipment->save();
+                }
+            }
+            EquipmentsCreated::dispatch($request->bill);
+            return response()->json(['success' => true, 'status' => 201]);
+        }catch(\Exception $e){
+            return response()->json(['e' => $e, 'status' => 401]);
+        }
     }
-
     /**
      * Display the specified resource.
      *

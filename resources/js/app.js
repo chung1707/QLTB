@@ -39,6 +39,8 @@ Vue.component('import', require('./components/admin/import/import.vue').default)
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+//vuex
  import Vue from 'vue';
  import Vuex from 'vuex';
  Vue.use(Vuex);
@@ -48,7 +50,15 @@ Vue.component('import', require('./components/admin/import/import.vue').default)
  const store = new Vuex.Store(storeConfig);
  Vue.config.productionTip = false;
 
+// vee validate 3
+import { ValidationObserver } from 'vee-validate';
+import { ValidationProvider } from 'vee-validate';
+
+Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver);
+
+import { extend } from './vee_rules';
 
 const app = new Vue({
-    el: '#app',store,
+    el: '#app',store,extend,
 });

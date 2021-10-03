@@ -16,11 +16,13 @@ class CreateEquipmentTable extends Migration
         Schema::create('equipment', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('device_code');
             $table->text('description')->nullable();
-            $table->foreignId('supplier_id')->constrained()->ondelete('cascade');
-            $table->foreignId('category_id')->constrained()->ondelete('cascade');
-            $table->integer('quantity');
-            $table->float('price');
+            $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->integer('quantity')->default(1);
+            $table->double('price');
+            $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }

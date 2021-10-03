@@ -13,9 +13,9 @@ class EquipmentExportBill extends Migration
      */
     public function up()
     {
-        Schema::create('equipment_export_bill', function (Blueprint $table) {
+        Schema::create('equipment_exportbill', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('export_bill_id')->constrained();
+            $table->foreignId('exportbill_id')->constrained();
             $table->foreignId('equipment_id')->constrained();
             $table->integer('quantity');
             $table->timestamps();
@@ -29,7 +29,7 @@ class EquipmentExportBill extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipment_export_bill');
+        Schema::dropIfExists('equipment_exportbill');
 
     }
 }

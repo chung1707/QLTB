@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ImportBillDetails extends Migration
+class CreateEquipmentImportBillTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class ImportBillDetails extends Migration
      */
     public function up()
     {
-        Schema::create('import_bill_details', function (Blueprint $table) {
+        Schema::create('equipment_importbill', function (Blueprint $table) {
             $table->id();
             $table->foreignId('equipment_id')->constrained();
-            $table->foreignId('import_bill_id')->constrained();
+            $table->foreignId('importbill_id')->constrained();
             $table->integer('quantity');
             $table->float('price');
             $table->timestamps();
@@ -30,7 +30,6 @@ class ImportBillDetails extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('import_bill_details');
-
+        Schema::dropIfExists('equipment_importbill');
     }
 }

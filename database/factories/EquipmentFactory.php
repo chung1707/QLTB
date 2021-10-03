@@ -6,6 +6,7 @@ use App\Models\Model;
 use App\Models\Category;
 use App\Models\Supplier;
 use App\Models\Equipment;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class EquipmentFactory extends Factory
@@ -28,6 +29,7 @@ class EquipmentFactory extends Factory
             'created_at' => now(),
             'updated_at' => now(),
             'name' => $this->faker->words(3, true),
+            'device_code' => Str::random(7),
             'description' => $this->faker->paragraphs(6, true),
             'price' =>$this->faker->numberBetween($min = 90000, $max = 500000),
             'quantity' => $this->faker->numberBetween($min = 50, $max = 200),

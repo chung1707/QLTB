@@ -9,4 +9,5 @@ class AppConst extends Model
 {
     use HasFactory;
     const DEFAULT_PER_PAGE = 10;
+    const RANDOM_CODE = 7;
 }

@@ -36,7 +36,7 @@ class ImportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json(dd($request->all()));
     }
 
     /**

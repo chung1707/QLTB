@@ -13,11 +13,12 @@ class CreateImportBillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('import_bills', function (Blueprint $table) {
+        Schema::create('importbills', function (Blueprint $table) {
             $table->id();
             $table->string('transaction_id');
             $table->foreignId('user_id')->constrained();
-            $table->float('total_price');
+            $table->double('total_price');
+            $table->foreignId('supplier_id')->constrained();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateImportBillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('import_bills');
+        Schema::dropIfExists('importbills');
     }
 }
