@@ -15,8 +15,8 @@ class EquipmentExportBill extends Migration
     {
         Schema::create('equipment_exportbill', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('exportbill_id')->constrained();
-            $table->foreignId('equipment_id')->constrained();
+            $table->foreignId('exportbill_id')->constrained()->onDelete('cascade');
+            $table->foreignId('equipment_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');
             $table->timestamps();
         });

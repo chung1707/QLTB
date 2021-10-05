@@ -3147,6 +3147,389 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)(['thumbnails'])),
+  props: {
+    equipment: {
+      type: Object,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      suppliers: {},
+      categories: {},
+      error: {},
+      success: false
+    };
+  },
+  methods: {
+    onSubmit: function onSubmit() {
+      var _this = this;
+
+      var formData = new FormData();
+      formData.append("_method", "put");
+      formData.append("name", this.equipment.name);
+      formData.append("device_code", this.equipment.device_code);
+      formData.append("quantity", this.equipment.quantity);
+      formData.append("price", this.equipment.price);
+      formData.append("supplier_id", this.equipment.supplier_id);
+      formData.append("category_id", this.equipment.category_id);
+      formData.append("description", this.equipment.description);
+      formData.append("thumbnail", this.equipment.thumbnail);
+      formData.append("thumbnails", this.thumbnails);
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post("/equipment/" + this.equipment.id, formData).then(function () {
+        _this.success = true;
+        _this.error = {};
+      })["catch"](function (error) {
+        _this.error = error.response.data.errors;
+        _this.success = false;
+      });
+    },
+    getSuppliers: function getSuppliers() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/suppliers").then(function (response) {
+        _this2.suppliers = response.data.suppliers;
+      });
+    },
+    getCategories: function getCategories() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/categories").then(function (response) {
+        _this3.categories = response.data.categories;
+      });
+    }
+  },
+  watch: {
+    success: function success() {
+      var _this4 = this;
+
+      setTimeout(function () {
+        return _this4.success = false;
+      }, 1500);
+    }
+  },
+  mounted: function mounted() {
+    this.getCategories();
+    this.getSuppliers();
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -3186,7 +3569,9 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('account-infos', __webpack
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('edit-category', __webpack_require__(/*! ./components/admin/category/edit_category.vue */ "./resources/js/components/admin/category/edit_category.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('add-category', __webpack_require__(/*! ./components/admin/category/add_category.vue */ "./resources/js/components/admin/category/add_category.vue")["default"]); // import
 
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('import', __webpack_require__(/*! ./components/admin/import/import.vue */ "./resources/js/components/admin/import/import.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('import', __webpack_require__(/*! ./components/admin/import/import.vue */ "./resources/js/components/admin/import/import.vue")["default"]); //equipment
+
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('edit-equipment', __webpack_require__(/*! ./components/equipment/edit_equipment.vue */ "./resources/js/components/equipment/edit_equipment.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -8030,6 +8415,30 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, "\n.inputErrors[data-v-a25b1b1c] {\n    color: red;\n    display: block;\n}\n.success[data-v-a25b1b1c] {\n    color: green;\n    padding: 20px;\n    background-color: rgba(0, 255, 0, 0.3);\n    text-align: center;\n    z-index: 2;\n    position: fixed;\n    top: 20%;\n    left: 50%;\n    margin-right: -50%;\n    transform: translate(-50%, -50%);\n}\n.errorInput[data-v-a25b1b1c] {\n    border-color: red;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.inputErrors[data-v-37b42685] {\n    color: red;\n    display: block;\n}\n.success[data-v-37b42685] {\n    color: green;\n    padding: 20px;\n    background-color: rgba(0, 255, 0, 0.3);\n    text-align: center;\n    z-index: 2;\n    position: fixed;\n    top: 20%;\n    left: 50%;\n    margin-right: -50%;\n    transform: translate(-50%, -50%);\n}\n.errorInput[data-v-37b42685] {\n    border-color: red;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -39204,6 +39613,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_equipment_vue_vue_type_style_index_0_id_37b42685_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_equipment_vue_vue_type_style_index_0_id_37b42685_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_equipment_vue_vue_type_style_index_0_id_37b42685_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
@@ -42601,6 +43040,47 @@ component.options.__file = "resources/js/components/dropZoneImgUploader.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/equipment/edit_equipment.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/equipment/edit_equipment.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _edit_equipment_vue_vue_type_template_id_37b42685_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./edit_equipment.vue?vue&type=template&id=37b42685&scoped=true& */ "./resources/js/components/equipment/edit_equipment.vue?vue&type=template&id=37b42685&scoped=true&");
+/* harmony import */ var _edit_equipment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit_equipment.vue?vue&type=script&lang=js& */ "./resources/js/components/equipment/edit_equipment.vue?vue&type=script&lang=js&");
+/* harmony import */ var _edit_equipment_vue_vue_type_style_index_0_id_37b42685_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css& */ "./resources/js/components/equipment/edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _edit_equipment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _edit_equipment_vue_vue_type_template_id_37b42685_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _edit_equipment_vue_vue_type_template_id_37b42685_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "37b42685",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/equipment/edit_equipment.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -42713,6 +43193,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/equipment/edit_equipment.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/equipment/edit_equipment.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_equipment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./edit_equipment.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_equipment_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/admin/category/add_category.vue?vue&type=style&index=0&id=7d83afdc&scoped=true&lang=css&":
 /*!**************************************************************************************************************************!*\
   !*** ./resources/js/components/admin/category/add_category.vue?vue&type=style&index=0&id=7d83afdc&scoped=true&lang=css& ***!
@@ -42761,6 +43257,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_infos_vue_vue_type_style_index_0_id_a25b1b1c_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader/dist/cjs.js!../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./infos.vue?vue&type=style&index=0&id=a25b1b1c&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/admin/user_management/infos.vue?vue&type=style&index=0&id=a25b1b1c&scoped=true&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/equipment/edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css&":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/components/equipment/edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_equipment_vue_vue_type_style_index_0_id_37b42685_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader/dist/cjs.js!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=style&index=0&id=37b42685&scoped=true&lang=css&");
 
 
 /***/ }),
@@ -42880,6 +43389,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_dropZoneImgUploader_vue_vue_type_template_id_02cce01b___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_dropZoneImgUploader_vue_vue_type_template_id_02cce01b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./dropZoneImgUploader.vue?vue&type=template&id=02cce01b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dropZoneImgUploader.vue?vue&type=template&id=02cce01b&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/equipment/edit_equipment.vue?vue&type=template&id=37b42685&scoped=true&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/equipment/edit_equipment.vue?vue&type=template&id=37b42685&scoped=true& ***!
+  \*********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_equipment_vue_vue_type_template_id_37b42685_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_equipment_vue_vue_type_template_id_37b42685_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_edit_equipment_vue_vue_type_template_id_37b42685_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./edit_equipment.vue?vue&type=template&id=37b42685&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=template&id=37b42685&scoped=true&");
 
 
 /***/ }),
@@ -45078,6 +45604,1036 @@ var render = function() {
     ],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=template&id=37b42685&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/equipment/edit_equipment.vue?vue&type=template&id=37b42685&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container-fluid px-1 py-5 mx-auto" }, [
+    _vm.success
+      ? _c("h5", { staticClass: "success" }, [
+          _c("i", { staticClass: "fas fa-check" }),
+          _vm._v(" Sửa đổi thông tin thành công ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "row d-flex justify-content-center" }, [
+      _c(
+        "div",
+        { staticClass: "col-xl-7 col-lg-8 col-md-9 col-11 text-center" },
+        [
+          _c(
+            "div",
+            { staticClass: "card" },
+            [
+              _c("ValidationObserver", {
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(ref) {
+                      var handleSubmit = ref.handleSubmit
+                      return [
+                        _c("h5", { staticClass: "text-center mb-4" }, [
+                          _vm._v(
+                            "\n                        Sửa đổi thông tin thiết bị\n                    "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "form",
+                          {
+                            staticClass: "form-card",
+                            on: {
+                              submit: function($event) {
+                                $event.preventDefault()
+                                return handleSubmit(_vm.onSubmit)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "row justify-content-between text-left"
+                              },
+                              [
+                                _c("ValidationProvider", {
+                                  attrs: {
+                                    rules: "required|max:255",
+                                    name: "name"
+                                  },
+                                  scopedSlots: _vm._u(
+                                    [
+                                      {
+                                        key: "default",
+                                        fn: function(ref) {
+                                          var errors = ref.errors
+                                          return [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "form-group col-sm-12 flex-column d-flex"
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass: "inputErrors"
+                                                  },
+                                                  [_vm._v(_vm._s(errors[0]))]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm.error.name
+                                                  ? _c(
+                                                      "span",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.error.name[0]
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e(),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "form-control-label px-3"
+                                                  },
+                                                  [_vm._v("Tên thiết bị")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: _vm.equipment.name,
+                                                      expression:
+                                                        "equipment.name"
+                                                    }
+                                                  ],
+                                                  class: {
+                                                    errorInput: _vm.error.name
+                                                  },
+                                                  attrs: {
+                                                    type: "text",
+                                                    id: "name",
+                                                    name: "name",
+                                                    placeholder:
+                                                      "Nhập tên thiết bị"
+                                                  },
+                                                  domProps: {
+                                                    value: _vm.equipment.name
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.equipment,
+                                                        "name",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    null,
+                                    true
+                                  )
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "row justify-content-between text-left"
+                              },
+                              [
+                                _c("ValidationProvider", {
+                                  attrs: {
+                                    rules: "required|max:255|min:7",
+                                    name: "device_code"
+                                  },
+                                  scopedSlots: _vm._u(
+                                    [
+                                      {
+                                        key: "default",
+                                        fn: function(ref) {
+                                          var errors = ref.errors
+                                          return [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "form-group col-sm-12 flex-column d-flex"
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass: "inputErrors"
+                                                  },
+                                                  [_vm._v(_vm._s(errors[0]))]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm.error.device_code
+                                                  ? _c(
+                                                      "span",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.error
+                                                              .device_code[0]
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e(),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "form-control-label px-3"
+                                                  },
+                                                  [_vm._v("Mã thiết bị")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.equipment
+                                                          .device_code,
+                                                      expression:
+                                                        "equipment.device_code"
+                                                    }
+                                                  ],
+                                                  class: {
+                                                    errorInput:
+                                                      _vm.error.device_code
+                                                  },
+                                                  attrs: {
+                                                    type: "text",
+                                                    id: "name",
+                                                    name: "device_code",
+                                                    placeholder:
+                                                      "Nhập mã thiết bị"
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.equipment.device_code
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.equipment,
+                                                        "device_code",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    null,
+                                    true
+                                  )
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "row justify-content-between text-left"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-group col-sm-6 flex-column d-flex"
+                                  },
+                                  [
+                                    _c("ValidationProvider", {
+                                      attrs: {
+                                        rules: "required|quantityValid|numeric",
+                                        name: "price"
+                                      },
+                                      scopedSlots: _vm._u(
+                                        [
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var errors = ref.errors
+                                              return [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass: "inputErrors"
+                                                  },
+                                                  [_vm._v(_vm._s(errors[0]))]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm.error.price
+                                                  ? _c(
+                                                      "span",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.error.price[0]
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e(),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "form-control-label px-3"
+                                                  },
+                                                  [_vm._v("Giá thành")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.equipment.price,
+                                                      expression:
+                                                        "equipment.price"
+                                                    }
+                                                  ],
+                                                  class: {
+                                                    errorInput: _vm.error.price
+                                                  },
+                                                  attrs: {
+                                                    type: "text",
+                                                    id: "price",
+                                                    min: 1,
+                                                    name: "price",
+                                                    placeholder:
+                                                      "Nhập giá thành (VNĐ)"
+                                                  },
+                                                  domProps: {
+                                                    value: _vm.equipment.price
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.equipment,
+                                                        "price",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        null,
+                                        true
+                                      )
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "form-group col-sm-6 flex-column d-flex"
+                                  },
+                                  [
+                                    _c("ValidationProvider", {
+                                      attrs: {
+                                        rules:
+                                          "required|numeric|quantityValid:1",
+                                        name: "quantity"
+                                      },
+                                      scopedSlots: _vm._u(
+                                        [
+                                          {
+                                            key: "default",
+                                            fn: function(ref) {
+                                              var errors = ref.errors
+                                              return [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass: "inputErrors"
+                                                  },
+                                                  [_vm._v(_vm._s(errors[0]))]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm.error.quantity
+                                                  ? _c(
+                                                      "span",
+                                                      { staticClass: "error" },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            _vm.error
+                                                              .quantity[0]
+                                                          )
+                                                        )
+                                                      ]
+                                                    )
+                                                  : _vm._e(),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "form-control-label px-3"
+                                                  },
+                                                  [_vm._v("Số lượng")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.equipment.quantity,
+                                                      expression:
+                                                        "equipment.quantity"
+                                                    }
+                                                  ],
+                                                  class: {
+                                                    errorInput: _vm.error.name
+                                                  },
+                                                  attrs: {
+                                                    type: "number",
+                                                    id: "name",
+                                                    min: 1,
+                                                    name: "quantity",
+                                                    placeholder: "Nhập số lượng"
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.equipment.quantity
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.equipment,
+                                                        "quantity",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            }
+                                          }
+                                        ],
+                                        null,
+                                        true
+                                      )
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "form-group col-sm-12 flex-column d-flex text-left"
+                              },
+                              [
+                                _c("ValidationProvider", {
+                                  attrs: {
+                                    rules: "required",
+                                    name: "supplier"
+                                  },
+                                  scopedSlots: _vm._u(
+                                    [
+                                      {
+                                        key: "default",
+                                        fn: function(ref) {
+                                          var errors = ref.errors
+                                          return [
+                                            _c(
+                                              "span",
+                                              { staticClass: "inputErrors" },
+                                              [_vm._v(_vm._s(errors[0]))]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm.error.supplier_id
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "error" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.error.supplier_id[0]
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "form-group" },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  { attrs: { for: "role" } },
+                                                  [_vm._v("Nhà cung cấp")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "select",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.equipment
+                                                            .supplier_id,
+                                                        expression:
+                                                          "equipment.supplier_id"
+                                                      }
+                                                    ],
+                                                    staticClass: "form-control",
+                                                    class: {
+                                                      errorInput:
+                                                        _vm.error.supplier_id
+                                                    },
+                                                    attrs: {
+                                                      name: "supplier_id"
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$selectedVal = Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function(o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function(o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                        _vm.$set(
+                                                          _vm.equipment,
+                                                          "supplier_id",
+                                                          $event.target.multiple
+                                                            ? $$selectedVal
+                                                            : $$selectedVal[0]
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  _vm._l(
+                                                    _vm.suppliers,
+                                                    function(supplier) {
+                                                      return _c(
+                                                        "option",
+                                                        {
+                                                          key: supplier.id,
+                                                          domProps: {
+                                                            value: supplier.id
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                            " +
+                                                              _vm._s(
+                                                                supplier.name
+                                                              ) +
+                                                              "\n                                        "
+                                                          )
+                                                        ]
+                                                      )
+                                                    }
+                                                  ),
+                                                  0
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    null,
+                                    true
+                                  )
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "form-group col-sm-12 flex-column d-flex text-left"
+                              },
+                              [
+                                _c("ValidationProvider", {
+                                  attrs: {
+                                    rules: "required",
+                                    name: "category"
+                                  },
+                                  scopedSlots: _vm._u(
+                                    [
+                                      {
+                                        key: "default",
+                                        fn: function(ref) {
+                                          var errors = ref.errors
+                                          return [
+                                            _c(
+                                              "span",
+                                              { staticClass: "inputErrors" },
+                                              [_vm._v(_vm._s(errors[0]))]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm.error.category_id
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "error" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.error.category_id[0]
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "form-group" },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  { attrs: { for: "role" } },
+                                                  [_vm._v("Chọn thể loại")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "select",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.equipment
+                                                            .category_id,
+                                                        expression:
+                                                          "equipment.category_id"
+                                                      }
+                                                    ],
+                                                    staticClass: "form-control",
+                                                    class: {
+                                                      errorInput:
+                                                        _vm.error.category_id
+                                                    },
+                                                    attrs: {
+                                                      name: "category_id"
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$selectedVal = Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function(o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function(o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                        _vm.$set(
+                                                          _vm.equipment,
+                                                          "category_id",
+                                                          $event.target.multiple
+                                                            ? $$selectedVal
+                                                            : $$selectedVal[0]
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  _vm._l(
+                                                    _vm.categories,
+                                                    function(category) {
+                                                      return _c(
+                                                        "option",
+                                                        {
+                                                          key: category.id,
+                                                          domProps: {
+                                                            value: category.id
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              category.name
+                                                            )
+                                                          )
+                                                        ]
+                                                      )
+                                                    }
+                                                  ),
+                                                  0
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    null,
+                                    true
+                                  )
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "form-group justify-content-between text-left"
+                              },
+                              [
+                                _c("ValidationProvider", {
+                                  attrs: { rules: "", name: "description" },
+                                  scopedSlots: _vm._u(
+                                    [
+                                      {
+                                        key: "default",
+                                        fn: function(ref) {
+                                          var errors = ref.errors
+                                          return [
+                                            _c(
+                                              "span",
+                                              { staticClass: "inputErrors" },
+                                              [_vm._v(_vm._s(errors[0]))]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm.error.description
+                                              ? _c(
+                                                  "span",
+                                                  { staticClass: "error" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        _vm.error.description[0]
+                                                      )
+                                                    )
+                                                  ]
+                                                )
+                                              : _vm._e(),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "form-group col-sm-12 flex-column d-flex"
+                                              },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "form-control-label px-3"
+                                                  },
+                                                  [_vm._v("Mô tả")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("textarea", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.equipment
+                                                          .description,
+                                                      expression:
+                                                        "equipment.description"
+                                                    }
+                                                  ],
+                                                  class: {
+                                                    errorInput:
+                                                      _vm.error.description
+                                                  },
+                                                  attrs: {
+                                                    rows: "5",
+                                                    cols: "20",
+                                                    type: "text",
+                                                    id: "description",
+                                                    name: "description"
+                                                  },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.equipment.description
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.equipment,
+                                                        "description",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    null,
+                                    true
+                                  )
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "form-group justify-content-between "
+                              },
+                              [
+                                _c(
+                                  "label",
+                                  { staticClass: "form-control-label px-3" },
+                                  [_vm._v("Ảnh của thiết bị")]
+                                ),
+                                _vm._v(" "),
+                                _c("img", {
+                                  staticClass: "img-fluid",
+                                  staticStyle: { width: "200px" },
+                                  attrs: {
+                                    src:
+                                      "/storage/thumbnails/" +
+                                      _vm.equipment.thumbnail,
+                                    alt: "Ảnh sản phẩm"
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "form-group justify-content-between text-left"
+                              },
+                              [
+                                _c("ValidationProvider", {
+                                  attrs: {
+                                    rules: "image",
+                                    name: "description"
+                                  },
+                                  scopedSlots: _vm._u(
+                                    [
+                                      {
+                                        key: "default",
+                                        fn: function(ref) {
+                                          var errors = ref.errors
+                                          return [
+                                            _c(
+                                              "span",
+                                              { staticClass: "inputErrors" },
+                                              [_vm._v(_vm._s(errors[0]))]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "form-group col-sm-12 flex-column d-flex"
+                                              },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "form-control-label px-3"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "Tải 1 ảnh mới cho thiết bị"
+                                                    )
+                                                  ]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("dropzone-uploader")
+                                              ],
+                                              1
+                                            )
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    null,
+                                    true
+                                  )
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "row justify-content-end" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "form-group col-sm-6",
+                                    staticStyle: { "margin-top": "5px" }
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "btn btn-block btn-primary",
+                                        staticStyle: { "line-height": "30px" },
+                                        attrs: {
+                                          href: "/equipment/" + _vm.equipment.id
+                                        }
+                                      },
+                                      [_vm._v("Hủy")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group col-sm-6" },
+                                  [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-block btn-primary"
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    Sửa đổi thông tin\n                                "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -41,7 +41,7 @@
                 <a class="collapse-item" href="/import/create">Nhập kho</a>
                 <a class="collapse-item" href="utilities-border.html">Xuất kho</a>
                 <a class="collapse-item" href="utilities-animation.html">Thanh lý</a>
-                <a class="collapse-item" href="utilities-other.html">Lịch sử</a>
+                <a class="collapse-item" href="/history">Lịch sử</a>
             </div>
         </div>
     </li>

@@ -17,7 +17,7 @@ class CreateSellBillsTable extends Migration
             $table->id();
             $table->string('transaction_id');
             $table->double('totalPrice');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

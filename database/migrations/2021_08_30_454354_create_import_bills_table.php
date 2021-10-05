@@ -16,9 +16,9 @@ class CreateImportBillsTable extends Migration
         Schema::create('importbills', function (Blueprint $table) {
             $table->id();
             $table->string('transaction_id');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->double('total_price');
-            $table->foreignId('supplier_id')->constrained();
+            $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

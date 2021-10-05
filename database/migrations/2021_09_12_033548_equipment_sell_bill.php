@@ -15,10 +15,10 @@ class EquipmentSellBill extends Migration
     {
         Schema::create('equipment_sellbills', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('equipment_id')->constrained();
+            $table->foreignId('equipment_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');
-            $table->float('price');
-            $table->foreignId('sellbill_id')->constrained();
+            $table->double('price');
+            $table->foreignId('sellbill_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

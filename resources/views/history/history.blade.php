@@ -21,28 +21,30 @@
                                 <thead>
                                     <tr role="row">
                                         <th class="sorting sorting_asc" aria-controls="dataTable"  aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 194px;">ID</th>
-                                        <th class="sorting" aria-controls="dataTable"  aria-label="Position: activate to sort column ascending" style="width: 296px;">Tên thiết bị</th>
-                                        <th class="sorting" aria-controls="dataTable"  colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141x;">Số lượng</th>
-                                        <th class="sorting" aria-controls="dataTable"  colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141px;">Giá trị</th>
+                                        <th class="sorting" aria-controls="dataTable"  aria-label="Position: activate to sort column ascending" style="width: 296px;">Mã giao dịch</th>
+                                        <th class="sorting" aria-controls="dataTable"  colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141x;">Tổng tiền</th>
+                                        <th class="sorting" aria-controls="dataTable"  colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141px;">Người lập</th>
 
                                         <th class="sorting" aria-controls="dataTable"  colspan="2" aria-label="Office: activate to sort column ascending" style="width: 50px;">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    @foreach($equipments as $equipment)
+                                    @foreach($importbills as $importbill)
                                     <tr class="odd">
-                                        <td class="sorting_1">{{ $equipment->id }}</td>
-                                        <td>{{ $equipment->name }}</td>
-                                        <td>{{ $equipment->quantity }}</td>
-                                        <td>{{ $equipment->price }}</td>
-                                        <td><a  class="btn btn-primary btn-sm" href="{{ route('equipment.show',['equipment'=>$equipment] ) }}">Xem chi tiết</a></td>
+                                        <td class="sorting_1">{{ $importbill->id }}</td>
+                                        <td>{{ $importbill->transaction_id }}</td>
+                                        <td>{{ $importbill->total_price }}</td>
+                                        <td>{{ $importbill->user->name }}</td>
+                                        <td><a  class="btn btn-primary btn-sm" href="/import/{{$importbill->id}}">Xem chi tiết</a></td>
                                         <td class="table__content">
-                                            <form action=" {{route('equipment.destroy',['equipment' => $equipment]) }} " method="post">
+                                            @if(auth()->user()->role->name == 'admin')
+                                            <form action=" {{ route('import.destroy',['importbill' => $importbill]) }}" method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-danger btn-sm" type='submit'>Xóa</button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach
@@ -53,7 +55,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-7">
                             <div style="padding: 20px 0px;">
-                                {{ $equipments->links()}}
+                                {{ $importbills->links()}}
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,7 @@ use App\Models\Equipment;
 use Illuminate\Http\Request;
 use App\Events\EquipmentsCreated;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Equipment\UpdateEquipmentReqeust;
 
 class EquipmentController extends Controller
 {
@@ -74,7 +75,8 @@ class EquipmentController extends Controller
      */
     public function show(Equipment $equipment)
     {
-        //
+        $equipment->load('supplier','category');
+        return view('equipment.equipment_details')->with('equipment', $equipment);
     }
 
     /**
@@ -85,7 +87,8 @@ class EquipmentController extends Controller
      */
     public function edit(Equipment $equipment)
     {
-        //
+        $equipment->load('supplier','category');
+        return view('equipment.edit_equipment')->with('equipment',$equipment);
     }
 
     /**
@@ -95,9 +98,21 @@ class EquipmentController extends Controller
      * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipment $equipment)
+    public function update(UpdateEquipmentReqeust $request, Equipment $equipment)
     {
-        //
+        try{
+            $equipment->fill($request->all());
+            if($request->thumbnails != null){
+                $equipment->thumbnail = $request->thumbnails;
+                $equipment->update();
+            }
+            else{
+                $equipment->update();
+            }
+            return response()->json(['equipment' => $equipment, 'status' => 201]);
+        }catch(\Exception $e){
+            return response()->json(['e' => $e, 'status' => 401]);
+        }
     }
 
     /**
@@ -108,6 +123,7 @@ class EquipmentController extends Controller
      */
     public function destroy(Equipment $equipment)
     {
-        //
+        $equipment->delete();
+        return redirect()->back();
     }
 }

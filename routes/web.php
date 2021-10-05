@@ -4,6 +4,7 @@ use App\Models\Equipment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\Import\ImportController;
 use App\Http\Controllers\Admin\UserMangeController;
 use App\Http\Controllers\Equipment\EquipmentController;
@@ -38,8 +39,15 @@ Route::post('users/unblock/{user}', [UserMangeController::class, 'unBlockUser'])
 Route::resource('/category',CategoryController::class)->middleware(['auth', 'role:admin']);
 
 Route::resource('/equipment',EquipmentController::class)->middleware(['auth', 'role:admin,employee']);
-Route::resource('/import',ImportController::class)->middleware(['auth', 'role:admin,employee']);
+
+//import
+Route::get('/import',[ImportController::class,'index'])->middleware(['auth', 'role:admin,employee'])->name('import.index');
+Route::get('/import/create',[ImportController::class,'create'])->middleware(['auth', 'role:admin,employee'])->name('import.create');
 
 
-
+//history
+Route::get('/history',[HistoryController::class,'index'])->middleware(['auth', 'role:admin,employee'])->name('history.index');
+//history import
+Route::delete('/import/{importbill}',[ImportController::class,'destroy'])->middleware(['auth', 'role:admin'])->name('import.destroy');
+Route::get('/import/{importbill}',[ImportController::class,'show'])->middleware(['auth', 'role:admin,employee'])->name('import.show');
 

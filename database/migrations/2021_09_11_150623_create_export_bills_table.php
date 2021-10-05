@@ -16,9 +16,9 @@ class CreateExportBillsTable extends Migration
         Schema::create('exportbills', function (Blueprint $table) {
             $table->id();
             $table->string('transaction_id');
-            $table->foreignId('area_id')->constrained();
+            $table->foreignId('area_id')->constrained()->onDelete('cascade');
             $table->integer('room_id');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('note');
             $table->timestamps();
         });

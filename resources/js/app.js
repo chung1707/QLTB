@@ -33,6 +33,10 @@ Vue.component('add-category', require('./components/admin/category/add_category.
 // import
 Vue.component('import', require('./components/admin/import/import.vue').default);
 
+//equipment
+
+Vue.component('edit-equipment', require('./components/equipment/edit_equipment.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

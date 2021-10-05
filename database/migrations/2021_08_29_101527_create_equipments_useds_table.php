@@ -15,11 +15,11 @@ class CreateEquipmentsUsedsTable extends Migration
     {
         Schema::create('equipments_useds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('equipment_id')->constrained();
+            $table->foreignId('equipment_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');
             $table->integer('room_id')->nullable();
-            $table->foreignId('area_id')->nullable()->constrained();
-            $table->text('status')->default('Bình thường');
+            $table->foreignId('area_id')->nullable()->constrained()->onDelete('cascade');
+            $table->text('status')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
         });

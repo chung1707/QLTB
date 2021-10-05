@@ -16,6 +16,9 @@ class Importbill extends Model
         return $this->belongsTo(User::class);
     }
     public function equipments(){
-        return $this->belongsToMany(Equipment::class);
+        return $this->belongsToMany(Equipment::class)->withPivot('quantity','price');
+    }
+    public function supplier(){
+        return $this->belongsTo(Supplier::class);
     }
 }

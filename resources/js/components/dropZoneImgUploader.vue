@@ -22,7 +22,7 @@ export default {
     data(){
       return {
         dropzoneOptions: {
-            url: 'http://localhost:8000/api/uploads',
+            url: '/api/uploads',
             thumbnailWidth: 150,
             acceptedFiles: ".jpeg,.jpg,.png,.gif,.jfif",
             addRemoveLinks: true,
