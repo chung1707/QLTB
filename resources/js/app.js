@@ -37,6 +37,13 @@ Vue.component('import', require('./components/admin/import/import.vue').default)
 
 Vue.component('edit-equipment', require('./components/equipment/edit_equipment.vue').default);
 
+//cart
+Vue.component('add-to-cart', require('./components/cart/addToCart.vue').default);
+Vue.component('cart-icon', require('./components/cart/cartIcon.vue').default);
+// export
+Vue.component('export', require('./components/cart/export.vue').default);
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -61,8 +68,8 @@ import { ValidationProvider } from 'vee-validate';
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 
-import { extend } from './vee_rules';
+import  './vee_rules';
 
 const app = new Vue({
-    el: '#app',store,extend,
+    el: '#app',store,
 });

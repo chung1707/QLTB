@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Equipment;
+use App\Models\Importbill;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $totalEquipment  = Equipment::count('id');
+        $totalAccount   = User::count('id');
+        $totalImportbill = Importbill::count('id');
+        return view('home')->with('totalEquipment', $totalEquipment)
+        ->with('totalAccount', $totalAccount)
+        ->with('totalImportbill', $totalImportbill);
     }
 }

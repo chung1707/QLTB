@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Area;
 use App\Models\Category;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
@@ -16,5 +17,9 @@ class InfoController extends Controller
     public function getCategories(){
         $categories = Category::all();
         return response()->json(['categories' => $categories]);
+    }
+    public function getAreas(){
+        $areas = Area::all();
+        return response()->json(['areas' => $areas]);
     }
 }

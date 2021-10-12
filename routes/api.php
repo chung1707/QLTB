@@ -25,3 +25,6 @@ Route::post('uploads',[ThumbnailController::class,'uploads']);
 Route::get('categories',[InfoController::class,'getCategories']);
 Route::get('suppliers',[InfoController::class,'getSuppliers']);
 
+Route::get('info/areas',[InfoController::class,'getAreas']);
+
+

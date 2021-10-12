@@ -14,6 +14,31 @@ export default {
     },
     setEquipments(state, equipments){
         state.equipments = equipments;
-    }
+    },
+
+    //cart
+    setEquipmentInCart(state, equipments){
+        state.equipmentInCart = equipments;
+    },
+    addToCart(state, equipment){
+        let qty  = 1;
+        let itemIncart = state.equipmentInCart.find(item => {
+            return item.id === equipment.id;
+        });
+        if(itemIncart){
+            if(itemIncart.pivot.quantity + qty > itemIncart.quantity){
+                itemIncart.pivot.quantity = itemIncart.quantity;
+                return;
+            }
+            itemIncart.pivot.quantity += qty;
+            return;
+        }
+        equipment['pivot'] = {'quantity':qty,'price': null};
+        state.equipmentInCart.push(equipment);
+    },
+    deleteEquipment(state,equipment){
+        let index = state.equipmentInCart.indexOf(equipment);
+        state.equipmentInCart.splice(index, 1);
+    },
 
 }

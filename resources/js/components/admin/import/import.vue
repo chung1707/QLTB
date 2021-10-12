@@ -103,7 +103,7 @@
 
                             <div
                                 class="row justify-content-between text-right"
-                                v-if="totalPrice !== null"
+                                v-if="totalPrice"
                             >
                                 <h3>{{ totalPrice }} VNĐ</h3>
                             </div>
@@ -214,6 +214,7 @@
                                 </div>
                                 <div
                                     class="row justify-content-between text-left"
+                                    style="margin: 0px auto;"
                                 >
                                     <div
                                         class="form-group col-sm-6 flex-column d-flex"

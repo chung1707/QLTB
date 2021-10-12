@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Cart;
 use App\Models\Role;
 use App\Models\Importbill;
 use Illuminate\Notifications\Notifiable;
@@ -48,5 +49,8 @@ class User extends Authenticatable
     }
     public function importbills(){
         return $this->hasMany(Importbill::class);
+    }
+    public function cart(){
+        return $this->hasOne(Cart::class);
     }
 }

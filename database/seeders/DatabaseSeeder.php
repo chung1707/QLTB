@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Area;
 use App\Models\Supplier;
 use App\Models\Equipment;
 use Illuminate\Database\Seeder;
@@ -25,6 +26,8 @@ class DatabaseSeeder extends Seeder
         ]);
         Supplier::factory()->count(10)->create();
         Equipment::factory()->count(30)->create();
+        Area::factory()->count(10)->create();
+
         // \App\Models\User::factory(10)->create();
     }
 }

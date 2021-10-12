@@ -21,4 +21,27 @@ export default {
             }
         });
     },
+    // cart
+    getListEquipment(context){
+        axios.get("/get_cart").then(response =>{
+            context.commit('setEquipmentInCart',response.data.equipments);
+        });
+    },
+    addToCart(context,equipment){
+        axios.post("/cart",{'equipment_id': equipment.id}).then(()=> {
+            context.commit('addToCart',equipment);
+        });
+    },
+    deleteEquipmentIncart(context,equipment){
+        axios.post("/delete_equipment_in_cart",{'equipment_id': equipment.id});
+        context.commit('deleteEquipment',equipment);
+    },
+    updateQty(context,equipment){
+        axios.post("/update_qty_cart", { 'equipment_id': equipment.id, newQuanty: equipment.pivot.quantity }).then (() =>{
+        });
+    },
+    clearCart(context){
+        axios.post('/clearCart');
+        context.commit('setEquipmentInCart',[]);
+    }
 }
