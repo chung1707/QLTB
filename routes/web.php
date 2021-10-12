@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\Category\CategoryController;
 |
 */
 
-Route::get('/login', function () {
+Route::get('warehouse/login', function () {
     return view('auth.login');
 });
 
