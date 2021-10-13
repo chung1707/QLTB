@@ -105,8 +105,13 @@ class UserMangeController extends Controller
         $user->save();
     }
     public function employees(){
-        $employees = Info::orderBy('id', 'desc')->paginate(AppConst::DEFAULT_PER_PAGE);
+        $employees = Info::where('MaPB','=', 'KHO')->orderBy('MaNV', 'desc')->paginate(AppConst::DEFAULT_PER_PAGE);
         $employees->load('user');
-        return view('admin.list_employee')->with('employees', $employees);
+        $totalPage = count($employees);
+        $total = Info::count('MaNV');
+        return view('admin.list_employee')
+        ->with('employees', $employees)
+        ->with('totalPage', $totalPage)
+        ->with('total', $total);
     }
 }

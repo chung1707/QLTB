@@ -4,48 +4,41 @@
 <h2 style="text-align: center;
     padding: 20px;">Danh sách tài khoản</h2>
 <div class="container-fluid">
-    <p>Tổng số tài khoản: {{ count($users)*($users->currentPage()) }} / {{ count($users)*($users->lastPage()) }}</p>
+    <p>Tổng số tài khoản: {{ $totalPage }} / {{ $total }}</p>
     <body>
         <table data-toggle="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Username</th>
-                    <th>Quyền</th>
-                    <th>Trạng thái</th>
-                    <th colspan="3">Thao tác</th>
+                    <th>Mã Nhân viên</th>
+                    <th>Họ Tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    <th>Số CMND</th>
+                    <th>Phòng ban</th>
+                    <th>Trạng thái tài khoản kho</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($employees as $employee)
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->username }}</td>
-                    <td>{{ $user->role->name }}</td>
-                    <td>
-                    <block-user :user="{{ json_encode($user) }}"></block-user>
-                    </td>
-                    <td>Xem chi tiết</td>
-                    <td>
-                        <a class="btn btn-default btn-sm"
-                        href="{{ route('users.edit',['user' => $user]) }}">Sửa</a>
-                    </td>
-                    <td class="table__content">
-                        <form action="{{ route('users.destroy',['user' => $user]) }}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn btn-default btn-sm" type='submit'>Xóa</button>
-                        </form>
-                    </td>
+                    <td>{{ $employee->MaNV }}</td>
+                    <td>{{ $employee->Hoten }}</td>
+                    <td>{{ $employee->NgaySinh }}</td>
+                    <td>{{ $employee->Gioitinh }}</td>
+                    <td>{{ $employee->Socmnd }}</td>
+                    <td>Nhân viên quản lý thiết bị</td>
+                    @if(isset($employee->user->id))
+                    <td>{{ $employee->user->username }}</td>
+                    @else
+                    <td>Chưa có tài khoản</td>
+                    @endif
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </body>
     <div style="padding: 20px 0px;">
-    {{ $users->links()}}
+    {{ $employees->links()}}
     </div>
 </div>
 
