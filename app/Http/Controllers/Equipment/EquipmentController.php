@@ -21,10 +21,8 @@ class EquipmentController extends Controller
         $equipments = Equipment::orderBy('id', 'desc')->paginate(AppConst::DEFAULT_PER_PAGE);
         $totalPage = count($equipments);
         $total = Equipment::count('id');
-        $totalEquipment = Equipment::count('id');
         return view('equipment.list')
         ->with('equipments', $equipments)
-        ->with('totalEquipment', $totalEquipment)
         ->with('total', $total)
         ->with('totalPage', $totalPage);
     }

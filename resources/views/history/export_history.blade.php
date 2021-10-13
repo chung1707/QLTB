@@ -4,8 +4,8 @@
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Lịch sử nhập hàng</h6>
-            <p>Tổng hóa đơn nhập hàng: {{ $totalPage }}/ {{ $total }}</p>
+            <h6 class="m-0 font-weight-bold text-primary">Lịch sử xuất hàng</h6>
+            <p>Tổng phiếu xuất hàng {{ $totalPage }}/ {{ $total }}</p>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -22,7 +22,7 @@
                                     <tr role="row">
                                         <th class="sorting sorting_asc" aria-controls="dataTable"  aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 194px;">ID</th>
                                         <th class="sorting" aria-controls="dataTable"  aria-label="Position: activate to sort column ascending" style="width: 296px;">Mã giao dịch</th>
-                                        <th class="sorting" aria-controls="dataTable"  colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141x;">Tổng tiền</th>
+                                        <th class="sorting" aria-controls="dataTable"  colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141x;">Nơi nhận thiết bị</th>
                                         <th class="sorting" aria-controls="dataTable"  colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141px;">Người lập</th>
 
                                         <th class="sorting" aria-controls="dataTable"  colspan="2" aria-label="Office: activate to sort column ascending" style="width: 50px;">Thao tác</th>
@@ -30,16 +30,20 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach($importbills as $importbill)
+                                    @foreach($bills as $bill)
                                     <tr class="odd">
-                                        <td class="sorting_1">{{ $importbill->id }}</td>
-                                        <td>{{ $importbill->transaction_id }}</td>
-                                        <td>{{ $importbill->total_price }}</td>
-                                        <td>{{ $importbill->user->name }}</td>
-                                        <td><a  class="btn btn-primary btn-sm" href="/import/{{$importbill->id}}">Xem chi tiết</a></td>
+                                        <td class="sorting_1">{{ $bill->id }}</td>
+                                        <td>{{ $bill->transaction_id }}</td>
+                                        @if(isset($bill->area_id))
+                                        <td>{{ $bill->area->name }}</td>
+                                        @else
+                                        <td>{{ $bill->total_price }}</td>
+                                        @endif
+                                        <td>{{ $bill->user->name }}</td>
+                                        <td><a  class="btn btn-primary btn-sm" href="/export_history/{{$bill->id}}">Xem chi tiết</a></td>
                                         <td class="table__content">
                                             @if(auth()->user()->role->name == 'admin')
-                                            <form action=" {{ route('import.destroy',['importbill' => $importbill]) }}" method="post">
+                                            <form action=" " method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-danger btn-sm" type='submit'>Xóa</button>
@@ -55,7 +59,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-7">
                             <div style="padding: 20px 0px;">
-                                {{ $importbills->links()}}
+                                {{ $bills->links()}}
                             </div>
                         </div>
                     </div>

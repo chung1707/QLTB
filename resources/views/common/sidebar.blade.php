@@ -23,8 +23,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/equipment">Thiết bị trong kho</a>
-                <a class="collapse-item" href="cards.html">Thiết bị sử dụng</a>
-                <a class="collapse-item" href="cards.html">Thêm thiết bị</a>
+                <a class="collapse-item" href="/used_equipment">Thiết bị sử dụng</a>
             </div>
         </div>
     </li>
@@ -39,7 +38,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/import/create">Nhập kho</a>
-                <a class="collapse-item" href="/history">Lịch sử</a>
+                <a class="collapse-item" href="/history">Lịch sử nhập kho</a>
+                <a class="collapse-item" href="/export_history">Lịch sử xuất kho</a>
             </div>
         </div>
     </li>
@@ -107,6 +107,7 @@
         <div id="account" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/users">Danh sách tài khoản</a>
+                <a class="collapse-item" href="/warehouse/employees">Danh sách nhân viên kho</a>
                 <a class="collapse-item" href="/users/create">Thêm tài khoản</a>
             </div>
         </div>

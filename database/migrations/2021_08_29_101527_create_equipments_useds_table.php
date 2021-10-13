@@ -13,7 +13,7 @@ class CreateEquipmentsUsedsTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipments_useds', function (Blueprint $table) {
+        Schema::create('equipment__useds', function (Blueprint $table) {
             $table->id();
             $table->foreignId('equipment_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');

@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Models\Cart;
+use App\Models\Info;
 use App\Models\Role;
+use App\Models\Exportbill;
 use App\Models\Importbill;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -52,5 +54,11 @@ class User extends Authenticatable
     }
     public function cart(){
         return $this->hasOne(Cart::class);
+    }
+    public function exportbills(){
+        return $this->hasMany(Exportbill::class);
+    }
+    public function info(){
+        return $this->hasOne(Info::class);
     }
 }

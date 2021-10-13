@@ -12,7 +12,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Tổng số thiết bị trong kho:</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total }} thiết bị</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalEquipment }} thiết bị</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-3x text-gray-300"></i>
@@ -45,7 +45,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Danh mục sản phẩm</h6>
-            <p>Tổng danh mục: {{ $totalPage }}/ {{ $total }}</p>
+            <p>Tổng danh mục: {{ $totalPage }}/ {{ $totalEquipment }}</p>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -64,7 +64,7 @@
                                         <th class="sorting" aria-controls="dataTable" aria-label="Position: activate to sort column ascending" style="width: 296px;">Tên thiết bị</th>
                                         <th class="sorting" aria-controls="dataTable" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141x;">Số lượng</th>
                                         <th class="sorting" aria-controls="dataTable" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141px;">Giá trị</th>
-
+                                        <th class="sorting" aria-controls="dataTable" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141px;">Đơn vị</th>
                                         <th class="sorting" aria-controls="dataTable" colspan="2" aria-label="Office: activate to sort column ascending" style="width: 50px;">Thao tác</th>
                                     </tr>
                                 </thead>
@@ -73,13 +73,11 @@
                                     @foreach($equipments as $equipment)
                                     <tr class="odd">
                                         <td class="sorting_1">{{ $equipment->id }}</td>
-                                        <td>{{ $equipment->name }}</td>
+                                        <td>{{ $equipment->equipment->name }}</td>
                                         <td>{{ $equipment->quantity }}</td>
-                                        <td>{{ $equipment->price }}</td>
+                                        <td>{{ $equipment->equipment->price }}</td>
+                                        <td>{{ $equipment->area->name }}</td>
                                         <td><a class="btn btn-primary btn-sm" href="{{ route('equipment.show',['equipment'=>$equipment] ) }}">Xem chi tiết</a></td>
-                                        <td>
-                                            <add-to-cart :equipment="{{ json_encode( $equipment) }}" ></add-to-cart>
-                                        </td>
                                         <td class="table__content">
                                             <form action=" {{route('equipment.destroy',['equipment' => $equipment]) }} " method="post">
                                                 @method('DELETE')

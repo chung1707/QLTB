@@ -10,7 +10,9 @@ use App\Http\Controllers\Export\ExportController;
 use App\Http\Controllers\Import\ImportController;
 use App\Http\Controllers\Admin\UserMangeController;
 use App\Http\Controllers\Equipment\EquipmentController;
+use App\Http\Controllers\Equipment\UsedEquipmentControlle;
 use App\Http\Controllers\Admin\Category\CategoryController;
+use App\Http\Controllers\Equipment\UsedEquipmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,7 @@ Route::get('/warehouse', [App\Http\Controllers\HomeController::class, 'index'])-
 
 // user manage
 Route::resource('/users',UserMangeController::class)->middleware(['auth', 'role:admin']);
+Route::get('/warehouse/employees',[UserMangeController::class,'employees'])->middleware(['auth', 'role:admin']);
 //block user
 Route::post('users/block/{user}', [UserMangeController::class, 'blockUser']);
 Route::post('users/unblock/{user}', [UserMangeController::class, 'unBlockUser']);
@@ -67,4 +70,7 @@ Route::post('/clearCart',[CartController::class,'clearCart'])->middleware('auth'
 //export
 Route::get('/export',[ExportController::class,'index'])->middleware(['auth', 'role:admin,employee'])->name('export.index');
 Route::post('/export',[ExportController::class,'storeExportBill'])->middleware(['auth', 'role:admin,employee'])->name('store_export_bill');
-
+Route::get('/export_history',[ExportController::class,'history'])->middleware(['auth', 'role:admin,employee'])->name('export_history');
+Route::get('/export_history/{id}',[ExportController::class,'show'])->middleware(['auth', 'role:admin,employee'])->name('export.show');
+// Used Equipment
+Route::resource('/used_equipment',UsedEquipmentController::class)->middleware(['auth', 'role:admin,employee']);

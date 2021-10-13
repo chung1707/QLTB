@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Info;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\AppConst;
@@ -102,5 +103,10 @@ class UserMangeController extends Controller
     public function unBlockUser(User $user){
         $user->blocked =false;
         $user->save();
+    }
+    public function employees(){
+        $employees = Info::orderBy('id', 'desc')->paginate(AppConst::DEFAULT_PER_PAGE);
+        $employees->load('user');
+        return view('admin.list_employee')->with('employees', $employees);
     }
 }

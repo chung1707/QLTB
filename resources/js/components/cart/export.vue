@@ -1,5 +1,8 @@
 <template>
     <div class="row">
+         <h5 class="success" v-if="success">
+            <i class="fas fa-check"></i> Thành công
+        </h5>
         <div class="row" v-if="Object.keys(equipmentInCart).length === 0">
             <div class="card mb-4" style="margin: 0px auto;">
                 <div class="card-header">
@@ -7,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     Bạn chưa chọn sản phẩm nào. Hãy chọn sản phẩm ngay!
-                    <a href="">Chọn sản phẩm</a>
+                    <a class="btn btn-primary" href="/equipment">Chọn sản phẩm</a>
                 </div>
             </div>
         </div>
@@ -319,6 +322,11 @@ export default {
             areas: [],
             area_id: 1,
             room_id: 1,
+            exportBill: {
+                items: null,
+                area_id: 1,
+            },
+            success: false,
         };
     },
     computed: {
@@ -328,7 +336,8 @@ export default {
         ...mapActions([
             "getListEquipment",
             "deleteEquipmentIncart",
-            "updateQty"
+            "updateQty",
+            "clearCart"
         ]),
         increasing(item) {
             if (item.pivot.quantity < item.quantity) {
@@ -361,11 +370,15 @@ export default {
             });
         },
         exportToArea(){
-            let exportBill = [];
-            exportBill['items'] =  this.equipmentInCart;
-            exportBill['area_id'] =  this.area_id;
-            axios.post("/export",{'exportBill': exportBill}).then(()=> {
-            console.log(response.data);
+            this.exportBill.items =  this.equipmentInCart;
+            this.exportBill.area_id =  this.area_id;
+            axios.post("/export",{'exportBill': this.exportBill}).then((response)=> {
+            if(response.data.status == 201){
+                this.success = true;
+                this.clearCart();
+            }else{
+
+            }
         });
     },
     },
@@ -376,6 +389,9 @@ export default {
     watch: {
         reload() {
             setTimeout(() => (this.reload = false), 1000);
+        },
+        success() {
+            setTimeout(() => (this.success = false), 1500);
         }
     }
 };
@@ -390,7 +406,19 @@ export default {
     -webkit-appearance: none;
     margin: 0;
 }
-
+.success {
+    color: green;
+    padding: 20px;
+    background-color: rgba(0, 255, 0, 0.3);
+    text-align: center;
+    z-index: 2;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    max-width: 300px;
+}
 .successLoad {
     color: green;
     background-color: rgba(0, 255, 0, 0.3);

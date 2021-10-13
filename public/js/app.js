@@ -3563,6 +3563,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -3572,11 +3575,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       pickRoom: false,
       areas: [],
       area_id: 1,
-      room_id: 1
+      room_id: 1,
+      exportBill: {
+        items: null,
+        area_id: 1
+      },
+      success: false
     };
   },
   computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapGetters)(["equipmentInCart"])),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)(["getListEquipment", "deleteEquipmentIncart", "updateQty"])), {}, {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_0__.mapActions)(["getListEquipment", "deleteEquipmentIncart", "updateQty", "clearCart"])), {}, {
     increasing: function increasing(item) {
       if (item.pivot.quantity < item.quantity) {
         item.pivot.quantity++;
@@ -3612,13 +3620,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     exportToArea: function exportToArea() {
-      var exportBill = [];
-      exportBill['items'] = this.equipmentInCart;
-      exportBill['area_id'] = this.area_id;
+      var _this2 = this;
+
+      this.exportBill.items = this.equipmentInCart;
+      this.exportBill.area_id = this.area_id;
       axios.post("/export", {
-        'exportBill': exportBill
-      }).then(function () {
-        console.log(response.data);
+        'exportBill': this.exportBill
+      }).then(function (response) {
+        if (response.data.status == 201) {
+          _this2.success = true;
+
+          _this2.clearCart();
+        } else {}
       });
     }
   }),
@@ -3628,11 +3641,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   watch: {
     reload: function reload() {
-      var _this2 = this;
+      var _this3 = this;
 
       setTimeout(function () {
-        return _this2.reload = false;
+        return _this3.reload = false;
       }, 1000);
+    },
+    success: function success() {
+      var _this4 = this;
+
+      setTimeout(function () {
+        return _this4.success = false;
+      }, 1500);
     }
   }
 });
@@ -9040,7 +9060,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.error {\r\n    color: red;\r\n    display: block;\n}\n.success {\r\n    color: green;\r\n    padding: 20px;\r\n    background-color: rgba(0, 255, 0, 0.3);\r\n    text-align: center;\r\n    z-index: 2;\r\n    position: fixed;\r\n    top: 20%;\r\n    left: 50%;\r\n    margin-right: -50%;\r\n    transform: translate(-50%, -50%);\n}\n.errorInput {\r\n    border-color: red;\n}\n.inputErrors {\r\n    color: red;\r\n    display: block;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.error {\n    color: red;\n    display: block;\n}\n.success {\n    color: green;\n    padding: 20px;\n    background-color: rgba(0, 255, 0, 0.3);\n    text-align: center;\n    z-index: 2;\n    position: fixed;\n    top: 20%;\n    left: 50%;\n    margin-right: -50%;\n    transform: translate(-50%, -50%);\n}\n.errorInput {\n    border-color: red;\n}\n.inputErrors {\n    color: red;\n    display: block;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9064,7 +9084,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.inputErrors[data-v-a25b1b1c] {\r\n    color: red;\r\n    display: block;\n}\n.success[data-v-a25b1b1c] {\r\n    color: green;\r\n    padding: 20px;\r\n    background-color: rgba(0, 255, 0, 0.3);\r\n    text-align: center;\r\n    z-index: 2;\r\n    position: fixed;\r\n    top: 20%;\r\n    left: 50%;\r\n    margin-right: -50%;\r\n    transform: translate(-50%, -50%);\n}\n.errorInput[data-v-a25b1b1c] {\r\n    border-color: red;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.inputErrors[data-v-a25b1b1c] {\n    color: red;\n    display: block;\n}\n.success[data-v-a25b1b1c] {\n    color: green;\n    padding: 20px;\n    background-color: rgba(0, 255, 0, 0.3);\n    text-align: center;\n    z-index: 2;\n    position: fixed;\n    top: 20%;\n    left: 50%;\n    margin-right: -50%;\n    transform: translate(-50%, -50%);\n}\n.errorInput[data-v-a25b1b1c] {\n    border-color: red;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9088,7 +9108,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.contentCart[data-v-df8f01f0] {\r\n    justify-content: space-around !important;\n}\n.quantityInput[data-v-df8f01f0]::-webkit-outer-spin-button,\r\n.quantityInput[data-v-df8f01f0]::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\n}\n.successLoad[data-v-df8f01f0] {\r\n    color: green;\r\n    background-color: rgba(0, 255, 0, 0.3);\r\n    text-align: center;\r\n    z-index: 2;\r\n    padding: 10px 20px;\r\n    position: fixed;\r\n    top: 20%;\r\n    left: 50%;\r\n    margin-right: -50%;\r\n    transform: translate(-50%, -50%);\n}\r\n\r\n/*\r\nemptycart style */\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.contentCart[data-v-df8f01f0] {\n    justify-content: space-around !important;\n}\n.quantityInput[data-v-df8f01f0]::-webkit-outer-spin-button,\n.quantityInput[data-v-df8f01f0]::-webkit-inner-spin-button {\n    -webkit-appearance: none;\n    margin: 0;\n}\n.success[data-v-df8f01f0] {\n    color: green;\n    padding: 20px;\n    background-color: rgba(0, 255, 0, 0.3);\n    text-align: center;\n    z-index: 2;\n    position: fixed;\n    top: 20%;\n    left: 50%;\n    margin-right: -50%;\n    transform: translate(-50%, -50%);\n    max-width: 300px;\n}\n.successLoad[data-v-df8f01f0] {\n    color: green;\n    background-color: rgba(0, 255, 0, 0.3);\n    text-align: center;\n    z-index: 2;\n    padding: 10px 20px;\n    position: fixed;\n    top: 20%;\n    left: 50%;\n    margin-right: -50%;\n    transform: translate(-50%, -50%);\n}\n\n/*\nemptycart style */\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -9112,7 +9132,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.inputErrors[data-v-37b42685] {\r\n    color: red;\r\n    display: block;\n}\n.success[data-v-37b42685] {\r\n    color: green;\r\n    padding: 20px;\r\n    background-color: rgba(0, 255, 0, 0.3);\r\n    text-align: center;\r\n    z-index: 2;\r\n    position: fixed;\r\n    top: 20%;\r\n    left: 50%;\r\n    margin-right: -50%;\r\n    transform: translate(-50%, -50%);\n}\n.errorInput[data-v-37b42685] {\r\n    border-color: red;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.inputErrors[data-v-37b42685] {\n    color: red;\n    display: block;\n}\n.success[data-v-37b42685] {\n    color: green;\n    padding: 20px;\n    background-color: rgba(0, 255, 0, 0.3);\n    text-align: center;\n    z-index: 2;\n    position: fixed;\n    top: 20%;\n    left: 50%;\n    margin-right: -50%;\n    transform: translate(-50%, -50%);\n}\n.errorInput[data-v-37b42685] {\n    border-color: red;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46720,6 +46740,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
+    _vm.success
+      ? _c("h5", { staticClass: "success" }, [
+          _c("i", { staticClass: "fas fa-check" }),
+          _vm._v(" Thành công\n    ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
     Object.keys(_vm.equipmentInCart).length === 0
       ? _c("div", { staticClass: "row" }, [_vm._m(0)])
       : _c("div", { staticClass: "container" }, [
@@ -47524,7 +47551,11 @@ var staticRenderFns = [
           _vm._v(
             "\n                Bạn chưa chọn sản phẩm nào. Hãy chọn sản phẩm ngay!\n                "
           ),
-          _c("a", { attrs: { href: "" } }, [_vm._v("Chọn sản phẩm")])
+          _c(
+            "a",
+            { staticClass: "btn btn-primary", attrs: { href: "/equipment" } },
+            [_vm._v("Chọn sản phẩm")]
+          )
         ])
       ]
     )
@@ -62178,7 +62209,7 @@ var index = {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\ProjectPhp\\\\QLTB","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
