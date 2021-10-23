@@ -26,5 +26,7 @@ Route::get('categories',[InfoController::class,'getCategories']);
 Route::get('suppliers',[InfoController::class,'getSuppliers']);
 
 Route::get('info/areas',[InfoController::class,'getAreas']);
+Route::get('info/rooms',[InfoController::class,'getRooms']);
+
 
 

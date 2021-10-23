@@ -36,6 +36,8 @@ Vue.component('import', require('./components/admin/import/import.vue').default)
 //equipment
 
 Vue.component('edit-equipment', require('./components/equipment/edit_equipment.vue').default);
+Vue.component('restore-equipment', require('./components/equipment/restore_equipment.vue').default);
+
 
 //cart
 Vue.component('add-to-cart', require('./components/cart/addToCart.vue').default);

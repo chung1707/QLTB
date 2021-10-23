@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Area;
+use App\Models\Room;
 use App\Models\Category;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
@@ -21,5 +22,9 @@ class InfoController extends Controller
     public function getAreas(){
         $areas = Area::all();
         return response()->json(['areas' => $areas]);
+    }
+    public function getRooms(){
+        $rooms = Room::all();
+        return response()->json(['rooms' => $rooms]);
     }
 }

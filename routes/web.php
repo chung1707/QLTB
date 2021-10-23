@@ -13,6 +13,8 @@ use App\Http\Controllers\Equipment\EquipmentController;
 use App\Http\Controllers\Equipment\UsedEquipmentControlle;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Equipment\UsedEquipmentController;
+use App\Http\Controllers\Equipment\DeletedEquipmentController;
+use App\Http\Controllers\Equipment\RestoreEquipmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/warehouse', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'role:admin,employee'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'role:admin,employee']);
+
 
 // user manage
 Route::resource('/users',UserMangeController::class)->middleware(['auth', 'role:admin']);
@@ -58,6 +62,7 @@ Route::get('/history',[HistoryController::class,'index'])->middleware(['auth', '
 //history import
 Route::delete('/import/{importbill}',[ImportController::class,'destroy'])->middleware(['auth', 'role:admin'])->name('import.destroy');
 Route::get('/import/{importbill}',[ImportController::class,'show'])->middleware(['auth', 'role:admin,employee'])->name('import.show');
+Route::get('/restore/history',[RestoreEquipmentController::class,'restoreHistory'])->middleware(['auth', 'role:admin,employee'])->name('restore.history');
 
 //cart
 Route::get('/cart',[CartController::class,'index'])->middleware(['auth', 'role:admin,employee']);
@@ -70,7 +75,12 @@ Route::post('/clearCart',[CartController::class,'clearCart'])->middleware('auth'
 //export
 Route::get('/export',[ExportController::class,'index'])->middleware(['auth', 'role:admin,employee'])->name('export.index');
 Route::post('/export',[ExportController::class,'storeExportBill'])->middleware(['auth', 'role:admin,employee'])->name('store_export_bill');
+Route::post('/export_to_room',[ExportController::class,'exportToRoom'])->middleware(['auth', 'role:admin,employee'])->name('export_to_room');
 Route::get('/export_history',[ExportController::class,'history'])->middleware(['auth', 'role:admin,employee'])->name('export_history');
 Route::get('/export_history/{id}',[ExportController::class,'show'])->middleware(['auth', 'role:admin,employee'])->name('export.show');
 // Used Equipment
 Route::resource('/used_equipment',UsedEquipmentController::class)->middleware(['auth', 'role:admin,employee']);
+Route::post('/restore_equipment',[RestoreEquipmentController::class,'restoreEquipment'])->middleware(['auth', 'role:admin,employee']);
+
+//deleted_equipments
+Route::get('/deleted_equipment',[DeletedEquipmentController::class,'index'])->middleware(['auth', 'role:admin,employee']);

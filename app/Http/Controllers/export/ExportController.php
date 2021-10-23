@@ -17,9 +17,9 @@ class ExportController extends Controller
         return view('cart.export');
     }
     public function storeExportBill(Request $request){
-        $bill = new Exportbill;
-        $bill->transaction_id = Str::random(AppConst::RANDOM_CODE);
-        if($request->exportBill['area_id']){
+        try{
+            $bill = new Exportbill;
+            $bill->transaction_id = Str::random(AppConst::RANDOM_CODE);
             $bill->area_id = $request->exportBill['area_id'];
             $bill->user_id = auth()->user()->id;
             $bill->save();
@@ -35,11 +35,35 @@ class ExportController extends Controller
                 $usedEquipment->save();
                 $equip = Equipment::find($item['id']);
                 $bill->equipments()->attach($equip,['quantity' => $item['pivot']['quantity']]);
-            }
-        return response()->json(['status' => 201]);
         }
-        else{
-            return response()->json(['status' => 401]);
+            return response()->json(['status' => 201]);
+        }catch(\Exception $e){
+            return response()->json(['status' => 401, 'error' => $e]);
+        }
+    }
+    public function exportToRoom(Request $request){
+        try{
+            $bill = new Exportbill;
+            $bill->transaction_id = Str::random(AppConst::RANDOM_CODE);
+            $bill->room_id = $request->exportBill['room_id'];
+            $bill->user_id = auth()->user()->id;
+            $bill->save();
+            foreach($request->exportBill['items'] as $item){
+                $usedEquipment = Equipment_Used::firstOrNew(
+                    [
+                        'equipment_id' => $item['id'],
+                        'room_id' => $bill->room_id
+                    ],
+                );
+                $usedEquipment->status = 'Tốt';
+                $usedEquipment->quantity += $item['pivot']['quantity'];
+                $usedEquipment->save();
+                $equip = Equipment::find($item['id']);
+                $bill->equipments()->attach($equip,['quantity' => $item['pivot']['quantity']]);
+        }
+            return response()->json(['status' => 201]);
+        }catch(\Exception $e){
+            return response()->json(['status' => 401, 'error' => $e]);
         }
     }
     public function history(){

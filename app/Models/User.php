@@ -7,6 +7,7 @@ use App\Models\Info;
 use App\Models\Role;
 use App\Models\Exportbill;
 use App\Models\Importbill;
+use App\Models\HistoryRestoreEquipment;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -60,5 +61,8 @@ class User extends Authenticatable
     }
     public function info(){
         return $this->hasOne(Info::class);
+    }
+    public function historyRestoreEquipments(){
+        return $this->hasMany(HistoryRestoreEquipment::class);
     }
 }

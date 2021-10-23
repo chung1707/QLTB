@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Equipment;
+use App\Models\Exportbill;
 use App\Models\Importbill;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,8 +31,10 @@ class HomeController extends Controller
         $totalEquipment  = Equipment::count('id');
         $totalAccount   = User::count('id');
         $totalImportbill = Importbill::count('id');
+        $totalExportBill =  Exportbill::count('id');
         return view('home')->with('totalEquipment', $totalEquipment)
         ->with('totalAccount', $totalAccount)
+        ->with('totalExportBill', $totalExportBill)
         ->with('totalImportbill', $totalImportbill);
     }
 }

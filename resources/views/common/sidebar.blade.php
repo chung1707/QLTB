@@ -24,6 +24,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/equipment">Thiết bị trong kho</a>
                 <a class="collapse-item" href="/used_equipment">Thiết bị sử dụng</a>
+                <a class="collapse-item" href="/deleted_equipment">Thiết bị hư hỏng</a>
             </div>
         </div>
     </li>
@@ -40,6 +41,7 @@
                 <a class="collapse-item" href="/import/create">Nhập kho</a>
                 <a class="collapse-item" href="/history">Lịch sử nhập kho</a>
                 <a class="collapse-item" href="/export_history">Lịch sử xuất kho</a>
+                <a class="collapse-item" href="/restore/history">Lịch sử thu hồi sản phẩm</a>
             </div>
         </div>
     </li>

@@ -203,6 +203,11 @@
                                                     name="area_id"
                                                     v-model="area_id"
                                                 >
+                                                     <option
+                                                        value="null"
+                                                    >
+                                                        Chọn địa điểm
+                                                    </option>
                                                     <option
                                                         v-for="area in areas"
                                                         :key="area.id"
@@ -249,14 +254,14 @@
                                 </h5>
                                 <form
                                     class="form-card"
-                                    @submit.prevent="handleSubmit(onImport)"
+                                    @submit.prevent="handleSubmit(exportToRoom)"
                                 >
                                     <div
                                         class="form-group col-sm-12 flex-column d-flex text-left"
                                     >
                                         <ValidationProvider
                                             rules="required"
-                                            name="supplier"
+                                            name="room_id"
                                             v-slot="{ errors }"
                                         >
                                             <span class="inputErrors">{{
@@ -264,19 +269,24 @@
                                             }}</span>
                                             <div class="form-group">
                                                 <label for="role"
-                                                    >Nhà cung cấp</label
+                                                    >Chọn phòng</label
                                                 >
                                                 <select
                                                     class="form-control"
-                                                    name="supplier_id"
-                                                    v-model="supplier_id"
+                                                    name="room_id"
+                                                    v-model="room_id"
                                                 >
                                                     <option
-                                                        v-for="supplier in suppliers"
-                                                        :key="supplier.id"
-                                                        :value="supplier.id"
+                                                        value="null"
                                                     >
-                                                        {{ supplier.name }}
+                                                        Chọn phòng
+                                                    </option>
+                                                    <option
+                                                        v-for="room in rooms"
+                                                        :key="room.id"
+                                                        :value="room.id"
+                                                    >
+                                                        {{ room.room }}
                                                     </option>
                                                 </select>
                                             </div>
@@ -287,7 +297,7 @@
                                             <button
                                                 class="btn btn-block btn-primary"
                                                 @click.prevent="
-                                                    pickArea = false
+                                                    pickRoom = false
                                                 "
                                             >
                                                 Hủy
@@ -320,11 +330,13 @@ export default {
             pickArea: false,
             pickRoom: false,
             areas: [],
-            area_id: 1,
-            room_id: 1,
+            rooms: [],
+            area_id: null,
+            room_id: null,
             exportBill: {
                 items: null,
-                area_id: 1,
+                area_id: null,
+                room_id: null,
             },
             success: false,
         };
@@ -369,22 +381,38 @@ export default {
                 this.areas = response.data.areas;
             });
         },
+        getRooms(){
+            axios.get('api/info/rooms').then(response => {
+                this.rooms = response.data.rooms;
+            });
+        },
         exportToArea(){
             this.exportBill.items =  this.equipmentInCart;
             this.exportBill.area_id =  this.area_id;
+            this.exportBill.room_id = null;
             axios.post("/export",{'exportBill': this.exportBill}).then((response)=> {
             if(response.data.status == 201){
                 this.success = true;
                 this.clearCart();
-            }else{
-
             }
         });
-    },
+        },
+        exportToRoom(){
+            this.exportBill.items =  this.equipmentInCart;
+            this.exportBill.room_id = this.room_id;
+            this.exportBill.area_id = null;
+            axios.post("/export_to_room",{'exportBill': this.exportBill}).then((response)=> {
+            if(response.data.status == 201){
+                this.success = true;
+                this.clearCart();
+            }
+        });
+        },
     },
     beforeMount() {
         this.getListEquipment();
         this.getAreas();
+        this.getRooms();
     },
     watch: {
         reload() {
@@ -392,7 +420,7 @@ export default {
         },
         success() {
             setTimeout(() => (this.success = false), 1500);
-        }
+        },
     }
 };
 </script>

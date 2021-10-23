@@ -9,6 +9,8 @@ use App\Models\Supplier;
 use App\Models\Exportbill;
 use App\Models\Importbill;
 use App\Models\Equipment_Used;
+use App\Models\DeletedEquipment;
+use App\Models\HistoryRestoreEquipment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -36,5 +38,11 @@ class Equipment extends Model
     }
     public function exportbills(){
         return $this->belongsToMany(Exportbill::class);
+    }
+    public function deletedEquipments(){
+        return $this->hasMany(DeletedEquipment::class);
+    }
+    public function historyRestoreEquipments(){
+        return $this->hasMany(HistoryRestoreEquipment::class);
     }
 }

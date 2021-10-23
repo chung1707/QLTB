@@ -22,7 +22,7 @@
             <h3 class="my-3">Thông tin thiết bị</h3>
             <p>{{ $equipment->description }}</p>
             <div>
-                <a class="btn btn-danger " href="{{route('equipment.index')}}">Quay lại</a>
+                <a class="btn btn-danger " href="{{ redirect()->back()->getTargetUrl() }}">Quay lại</a>
                 <a class="btn btn-primary " href="{{ route('equipment.edit',['equipment' => $equipment]) }}">Sửa thông tin sản phẩm</a>
             </div>
         </div>

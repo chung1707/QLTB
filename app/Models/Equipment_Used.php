@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Area;
+use App\Models\Room;
 use App\Models\Equipment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,5 +17,8 @@ class Equipment_Used extends Model
     }
     public function area(){
         return $this->belongsTo(Area::class);
+    }
+    public function room(){
+        return $this->belongsTo(Room::class);
     }
 }
