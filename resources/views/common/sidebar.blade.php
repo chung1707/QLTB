@@ -42,6 +42,7 @@
                 <a class="collapse-item" href="/history">Lịch sử nhập kho</a>
                 <a class="collapse-item" href="/export_history">Lịch sử xuất kho</a>
                 <a class="collapse-item" href="/restore/history">Lịch sử thu hồi sản phẩm</a>
+                <a class="collapse-item" href="/sell_bill">Hóa đơn thanh lý</a>
             </div>
         </div>
     </li>
@@ -113,13 +114,6 @@
                 <a class="collapse-item" href="/users/create">Thêm tài khoản</a>
             </div>
         </div>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
     </li>
 
     <!-- Divider -->

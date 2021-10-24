@@ -45,7 +45,7 @@
                                         <th class="sorting sorting_asc" aria-controls="dataTable" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 194px;">ID</th>
                                         <th class="sorting" aria-controls="dataTable" aria-label="Position: activate to sort column ascending" style="width: 296px;">Tên thiết bị</th>
                                         <th class="sorting" aria-controls="dataTable" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141x;">Số lượng</th>
-                                        <th class="sorting" aria-controls="dataTable" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141x;">Ghi chú</th>
+                                        <th class="sorting" aria-controls="dataTable" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 141x;">Trạng thái</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,9 +55,17 @@
                                         <td class="sorting_1">{{ $equipment->id }}</td>
                                         <td>{{ $equipment->equipment->name }}</td>
                                         <td>{{ $equipment->quantity }}</td>
-                                        <td>{{ $equipment->note }}</td>
+                                        @if($equipment->sold)
+                                        <td>Đã thanh lý</td>
+                                        @else
+                                        <td>Chưa thanh lý</td>
+                                        @endif
                                         <td><a class="btn btn-primary btn-sm" href="{{ route('equipment.show',['equipment'=>$equipment] ) }}">Xem chi tiết</a></td>
-                                        <td><add-to-cart :equipment="{{ json_encode( $equipment) }}"></add-to-cart></td>
+                                        @if($equipment->quantity > 0)
+                                        <td>
+                                            <add-to-sell-cart :equipment="{{ json_encode( $equipment) }}" ></add-to-sell-cart>
+                                        </td>
+                                        @endif
                                         <td class="table__content">
                                             <form action=" {{route('equipment.destroy',['equipment' => $equipment]) }} " method="post">
                                                 @method('DELETE')

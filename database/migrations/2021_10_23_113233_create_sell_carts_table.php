@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSellBillsTable extends Migration
+class CreateSellCartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateSellBillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sellbills', function (Blueprint $table) {
+        Schema::create('sell_carts', function (Blueprint $table) {
             $table->id();
-            $table->string('client');
-            $table->string('phone');
-            $table->string('transaction_id');
-            $table->double('totalPrice');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
@@ -31,6 +27,6 @@ class CreateSellBillsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sellbills');
+        Schema::dropIfExists('sell_carts');
     }
 }

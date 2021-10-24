@@ -3,18 +3,18 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Equipment;
+use App\Models\DeletedEquipment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Cart extends Model
+class SellCart extends Model
 {
     use HasFactory;
     protected $fillable = ['user_id'];
-    public function equipments(){
-        return $this->belongsToMany(Equipment::class)->withPivot('quantity');
-    }
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function deletedEquipments(){
+        return $this->BelongsToMany(DeletedEquipment::class)->withPivot('quantity','newPrice');
     }
 }

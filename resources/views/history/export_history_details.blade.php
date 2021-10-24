@@ -31,7 +31,10 @@
             </ul>
             @else
             <ul>
-
+                <li style="list-style: circle;
+    padding: 5px;">
+                    Đơn vị nhận thiết bị <span style="color: #dd5757;">{{ $bill->room->room }}</span>
+                </li>
             </ul>
             @endif
         </div>
@@ -75,10 +78,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="d-flex justify-content-between" style="margin-top:100px;">
                 <div>
-                    <a class="btn btn-danger " href="{{route('export_history')}}">Quay lại</a>
+                    <a class="btn btn-danger "href="{{route('export_history')}}">Quay lại</a>
                 </div>
+                <print></print>
             </div>
         </div>
     </div>

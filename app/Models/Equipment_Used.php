@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Area;
 use App\Models\Room;
+use App\Models\SellCart;
 use App\Models\Equipment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

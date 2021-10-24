@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Cart;
 use App\Models\Info;
 use App\Models\Role;
+use App\Models\SellCart;
 use App\Models\Exportbill;
 use App\Models\Importbill;
 use App\Models\HistoryRestoreEquipment;
@@ -64,5 +65,11 @@ class User extends Authenticatable
     }
     public function historyRestoreEquipments(){
         return $this->hasMany(HistoryRestoreEquipment::class);
+    }
+    public function sellCart(){
+        return $this->hasOne(SellCart::class);
+    }
+    public function sellBills(){
+        return $this->hasMany(Sellbills::class);
     }
 }

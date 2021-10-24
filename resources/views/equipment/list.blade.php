@@ -57,9 +57,11 @@
                                         <td>{{ $equipment->quantity }}</td>
                                         <td>{{ $equipment->price }}</td>
                                         <td><a class="btn btn-primary btn-sm" href="{{ route('equipment.show',['equipment'=>$equipment] ) }}">Xem chi tiết</a></td>
+                                        @if($equipment->quantity > 0)
                                         <td>
                                             <add-to-cart :equipment="{{ json_encode( $equipment) }}" ></add-to-cart>
                                         </td>
+                                        @endif
                                         <td class="table__content">
                                             <form action=" {{route('equipment.destroy',['equipment' => $equipment]) }} " method="post">
                                                 @method('DELETE')

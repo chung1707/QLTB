@@ -66,7 +66,9 @@
                                         <td>{{ $equipment->room->room }}</td>
                                         @endif
                                         <td><a class="btn btn-primary btn-sm" href="{{ route('equipment.show',['equipment'=>$equipment] ) }}">Xem chi tiết</a></td>
+                                        @if($equipment->quantity > 0))
                                         <td><restore-equipment :item="{{ json_encode( $equipment) }}" ></restore-equipment></td>
+                                        @endif
                                         <td class="table__content">
                                             <form action=" {{route('equipment.destroy',['equipment' => $equipment]) }} " method="post">
                                                 @method('DELETE')

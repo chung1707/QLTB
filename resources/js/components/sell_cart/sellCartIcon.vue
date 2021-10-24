@@ -9,10 +9,10 @@
             aria-haspopup="true"
             aria-expanded="true"
         >
-            <i class="fas fa-luggage-cart fa-3x text-gray-300"></i>
+            <i class="fas fa-shopping-cart fa-3x text-gray-300"></i>
             <!-- Counter - Alerts -->
             <span class="badge badge-danger badge-counter">{{
-                totalEquipment
+                totalEquipmentInSellCart
             }}</span>
         </a>
         <!-- Dropdown - Alerts -->
@@ -23,7 +23,7 @@
             <h6 class="dropdown-header">
                 Sản phẩm chờ xuất
             </h6>
-            <div v-for="item in equipmentInCart" :key="item.id">
+            <div v-for="item in sellCart" :key="item.id">
                 <div
                     class="dropdown-item d-flex align-items-center"
                     href="#"
@@ -38,7 +38,7 @@
                                 ><img
                                     style="max-width: 50px;"
                                     :src="
-                                        '/storage/thumbnails/' + item.thumbnail
+                                        '/storage/thumbnails/' + item.equipment.thumbnail
                                     "
                                 />
                             </a>
@@ -47,9 +47,9 @@
                     <div>
                         <a
                             style="text-decoration: none; color: black; cursor: pointer;"
-                            :href="'/equipment/' + item.id"
+                            :href="'/equipment/' + item.equipment.id"
                             class="font-weight-bold"
-                            >{{ item.name }}</a
+                            >{{ item.equipment.name }}</a
                         >
 
                         <div class="text-black-500">
@@ -61,7 +61,7 @@
                         style=" position: absolute;
                                 cursor: pointer;
                                 right: 10px;"
-                        @click.prevent="deleteEquipmentIncart(item)"
+                        @click.prevent="deleteItemInSellCart(item)"
                         >X</span
                     >
                 </div>
@@ -69,8 +69,8 @@
             <div class="d-flex align-items-center">
                 <a
                     class="dropdown-item text-center small text-black-500"
-                    href="/export"
-                    >Xuất thiết bị</a
+                    href="/sell"
+                    >Thanh lý thiết bị</a
                 >
             </div>
         </div>
@@ -81,13 +81,13 @@
 import { mapActions, mapGetters } from "vuex";
 export default {
     computed: {
-        ...mapGetters(["equipmentInCart", "totalEquipment"])
+        ...mapGetters(["sellCart", "totalEquipmentInSellCart"])
     },
     methods: {
-        ...mapActions(["getListEquipment", "deleteEquipmentIncart"])
+        ...mapActions(["getSellCart", "deleteItemInSellCart"])
     },
     mounted() {
-        this.getListEquipment();
+        this.getSellCart();
     }
 };
 </script>

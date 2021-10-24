@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EquipmentSellBill extends Migration
+class CreateDeletedEquipmentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class EquipmentSellBill extends Migration
      */
     public function up()
     {
-        Schema::create('equipment_sellbills', function (Blueprint $table) {
+        Schema::create('deleted_equipment', function (Blueprint $table) {
             $table->id();
             $table->foreignId('equipment_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');
-            $table->double('price');
-            $table->foreignId('sellbill_id')->constrained()->onDelete('cascade');
+            $table->foreignId('area_id')->nullable()->constrained()->onDelete('cascade');
+            $table->integer('room_id')->nullable()->constrained()->onDelete('cascade');
+            $table->boolean('sold')->default(false);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class EquipmentSellBill extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipment_sellbills');
+        Schema::dropIfExists('deleted_equipment');
     }
 }

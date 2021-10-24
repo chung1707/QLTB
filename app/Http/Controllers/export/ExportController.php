@@ -34,6 +34,8 @@ class ExportController extends Controller
                 $usedEquipment->quantity += $item['pivot']['quantity'];
                 $usedEquipment->save();
                 $equip = Equipment::find($item['id']);
+                $equip->quantity -= $item['pivot']['quantity'];
+                $equip->update();
                 $bill->equipments()->attach($equip,['quantity' => $item['pivot']['quantity']]);
         }
             return response()->json(['status' => 201]);

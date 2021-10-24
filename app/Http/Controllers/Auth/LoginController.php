@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Cart;
+use App\Models\SellCart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -58,6 +59,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         Cart::firstOrCreate(['user_id' => $user->id]);
+        SellCart::firstOrCreate(['user_id' => $user->id]);
         return redirect('warehouse');
     }
 }

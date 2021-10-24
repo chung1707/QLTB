@@ -18,7 +18,6 @@ class CartEquipment extends Migration
             $table->foreignId('equipment_id')->constrained()->onDelete('cascade');
             $table->foreignId('cart_id')->constrained()->onDelete('cascade');
             $table->integer('quantity')->default(1);
-            $table->double('newPrice')->nullable();
             $table->timestamps();
         });
     }

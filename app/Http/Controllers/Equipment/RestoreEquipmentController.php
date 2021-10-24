@@ -48,7 +48,7 @@ class RestoreEquipmentController extends Controller
             $deletedEquipment = DeletedEquipment::firstOrNew([
                 'equipment_id' => $request->equipment_id,
             ]);
-            if($deletedEquipment->quantity){
+            if($deletedEquipment->quantity && !$deletedEquipment->note){
                 $deletedEquipment->quantity += $request->quantity;
                 $deletedEquipment->update();
             }else{

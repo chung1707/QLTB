@@ -21,6 +21,7 @@
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
+        <sell-cart-icon></sell-cart-icon>
         <cart-icon></cart-icon>
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
         <li class="nav-item dropdown no-arrow d-sm-none">

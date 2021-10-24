@@ -8,9 +8,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\Export\ExportController;
 use App\Http\Controllers\Import\ImportController;
+use App\Http\Controllers\Equipment\SellController;
 use App\Http\Controllers\Admin\UserMangeController;
 use App\Http\Controllers\Equipment\EquipmentController;
-use App\Http\Controllers\Equipment\UsedEquipmentControlle;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Equipment\UsedEquipmentController;
 use App\Http\Controllers\Equipment\DeletedEquipmentController;
@@ -44,8 +44,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->midd
 Route::resource('/users',UserMangeController::class)->middleware(['auth', 'role:admin']);
 Route::get('/warehouse/employees',[UserMangeController::class,'employees'])->middleware(['auth', 'role:admin']);
 //block user
-Route::post('users/block/{user}', [UserMangeController::class, 'blockUser']);
-Route::post('users/unblock/{user}', [UserMangeController::class, 'unBlockUser']);
+Route::post('users/block/{user}', [UserMangeController::class, 'blockUser'])->middleware(['auth', 'role:admin']);;
+Route::post('users/unblock/{user}', [UserMangeController::class, 'unBlockUser'])->middleware(['auth', 'role:admin']);;
 
 //category
 Route::resource('/category',CategoryController::class)->middleware(['auth', 'role:admin']);
@@ -84,3 +84,19 @@ Route::post('/restore_equipment',[RestoreEquipmentController::class,'restoreEqui
 
 //deleted_equipments
 Route::get('/deleted_equipment',[DeletedEquipmentController::class,'index'])->middleware(['auth', 'role:admin,employee']);
+
+
+//sellcart
+Route::get('/sell',[SellController::class,'index'])->middleware(['auth', 'role:admin,employee'])->name('sell.index');
+Route::post('/sell_cart',[SellController::class,'store'])->middleware('auth');
+Route::get('/get_sell_cart',[SellController::class,'getCart'])->middleware('auth');
+Route::post('/delete_equipment_in_sell_cart',[SellController::class,'deleteEquipmentInCart'])->middleware('auth');
+Route::post('/update_qty_sell_cart',[SellController::class,'updateQty'])->middleware('auth');
+Route::post('/update_new_price_sell_cart',[SellController::class,'updateNewPrice'])->middleware('auth');
+Route::post('/clearSellCart',[SellController::class,'clearCart'])->middleware('auth');
+
+Route::post('/create_sell_bill',[SellController::class,'storeSellBill'])->middleware('auth');
+// list sellbill
+Route::get('/sell_bill',[SellController::class,'history'])->middleware('auth');
+Route::get('/sell_bill/show/{bill}',[SellController::class,'showSellBill'])->name('sell_bill_details')->middleware('auth');
+

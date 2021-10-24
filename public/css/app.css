@@ -10002,3 +10002,17 @@ h3 {
     border-color: #dee2e6;
   }
 }
+@media print {
+  /* All your print styles go here */
+  header {
+    display: none !important;
+  }
+
+  #accordionSidebar {
+    display: none !important;
+  }
+
+  footer {
+    display: none !important;
+  }
+}

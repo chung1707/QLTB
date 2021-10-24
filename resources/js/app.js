@@ -45,6 +45,14 @@ Vue.component('cart-icon', require('./components/cart/cartIcon.vue').default);
 // export
 Vue.component('export', require('./components/cart/export.vue').default);
 
+//sell
+Vue.component('sell', require('./components/sell_cart/sell.vue').default);
+Vue.component('sell-cart-icon', require('./components/sell_cart/sellCartIcon.vue').default);
+Vue.component('add-to-sell-cart', require('./components/sell_cart/addToSellCart.vue').default);
+
+// print invoice
+Vue.component('print', require('./components/print_invoice.vue').default);
+
 
 
 /**

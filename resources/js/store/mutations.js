@@ -41,4 +41,29 @@ export default {
         state.equipmentInCart.splice(index, 1);
     },
 
+    //sell
+    setSellCart(state, equipments){
+        state.sellCart = equipments;
+    },
+    addToSellCart(state, equipment){
+        let qty  = 1;
+        let itemIncart = state.sellCart.find(item => {
+            return item.id === equipment.id;
+        });
+        if(itemIncart){
+            if(itemIncart.pivot.quantity + qty > itemIncart.quantity){
+                itemIncart.pivot.quantity = itemIncart.quantity;
+                return;
+            }
+            itemIncart.pivot.quantity += qty;
+            return;
+        }
+        equipment['pivot'] = {'quantity':qty,'newPrice': null};
+        state.sellCart.push(equipment);
+    },
+    deleteItemInSellCart(state,equipment){
+        let index = state.sellCart.indexOf(equipment);
+        state.sellCart.splice(index, 1);
+    },
+
 }

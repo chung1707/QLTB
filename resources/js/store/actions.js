@@ -43,5 +43,33 @@ export default {
     clearCart(context){
         axios.post('/clearCart');
         context.commit('setEquipmentInCart',[]);
+    },
+
+    // sell cart
+    getSellCart(context){
+        axios.get("/get_sell_cart").then(response =>{
+            context.commit('setSellCart',response.data.equipments);
+        });
+    },
+    addToSellCart(context,equipment){
+        axios.post("/sell_cart",{'equipment_id': equipment.id}).then(()=> {
+            context.commit('addToSellCart',equipment);
+        });
+    },
+    deleteItemInSellCart(context,equipment){
+        axios.post("/delete_equipment_in_sell_cart",{'equipment_id': equipment.id});
+        context.commit('deleteItemInSellCart',equipment);
+    },
+    updateQtySellCart(context,equipment){
+        axios.post("/update_qty_sell_cart", { 'equipment_id': equipment.id, newQuanty: equipment.pivot.quantity }).then (() =>{
+        });
+    },
+    updateNewPriceSellCart(context,equipment){
+        axios.post("/update_new_price_sell_cart", { 'equipment_id': equipment.id, newPrice: equipment.pivot.newPrice }).then (() =>{
+        });
+    },
+    clearSellCart(context){
+        axios.post('/clearSellCart');
+        context.commit('setSellCart',[]);
     }
 }

@@ -18,19 +18,31 @@ export default {
     equipmentInCart(state){
         return state.equipmentInCart;
     },
-    totalPriceInCart(state){
-        let sum = null;
-            for (var i = 0; i < state.equipmentInCart.length; i++) {
-                sum +=
-                    state.equipmentInCart[i].pivot.price *
-                    state.equipmentInCart[i].pivot.quantity;
-            }
-        return sum;
-    },
     totalEquipment(state){
         let total = 0;
         for(let i = 0; i < state.equipmentInCart.length; i++){
             total += Number(state.equipmentInCart[i].pivot.quantity);
+        }
+        return Number(total);
+    },
+
+    //sell
+    sellCart(state){
+        return state.sellCart;
+    },
+    totalPriceInSellCart(state){
+        let sum = null;
+            for (var i = 0; i < state.sellCart.length; i++) {
+                sum +=
+                    state.sellCart[i].pivot.newPrice *
+                    state.sellCart[i].pivot.quantity;
+            }
+        return Number(sum);
+    },
+    totalEquipmentInSellCart(state){
+        let total = 0;
+        for(let i = 0; i < state.sellCart.length; i++){
+            total += Number(state.sellCart[i].pivot.quantity);
         }
         return Number(total);
     },
