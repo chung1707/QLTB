@@ -13,13 +13,15 @@
                     <div class="col-lg-6">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Tạo tài khoản!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Tạo tài khoản cho nhân viên @if(isset($info->Hoten)){{$info->Hoten}}@endif!</h1>
+
                             </div>
                             @if(isset($user))
                                 <p>Bạn vừa tạo tài khoản: {{$user->name}}</p>
                             @endif
                             <form method="POST" action="{{ route('users.store') }}">
                                 @csrf
+                                <input type="hidden" name="employee_id" value="{{$info->MaNV}}">
                                 <div class="form-group">
 
                                     <input id="name" type="text" class="form-control form-control-user @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>

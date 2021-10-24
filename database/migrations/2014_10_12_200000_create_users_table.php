@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username',100)->unique();
             $table->string('password',100);
             $table->foreignId('role_id')->default(2)->constrained();
-            $table->integer('employee_id')->nullable();
+            $table->string('employee_id')->nullable();
             $table->boolean('blocked')->default(false);
             $table->rememberToken();
             $table->timestamps();

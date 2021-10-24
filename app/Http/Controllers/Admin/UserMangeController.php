@@ -21,18 +21,21 @@ class UserMangeController extends Controller
     public function index()
     {
         $users = User::where('id', "!=", auth()->user()->id)->orderBy('id', 'desc')->paginate(AppConst::DEFAULT_PER_PAGE);
+        $users->load('info');
         return view('admin.user_manage')->with('users',$users);
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $roles = Role::orderBy('id', 'DESC')->get();
-        return view('admin.create_account')->with('roles',$roles);
+        $info = Info::where('MaNV', '=', $request->employee_id)->first();
+        return view('admin.create_account')
+        ->with('roles',$roles)
+        ->with('info',$info);
     }
 
     /**
@@ -45,9 +48,9 @@ class UserMangeController extends Controller
     {
         $user = new User;
         $user->fill($request->all());
+        $user->employee_id = $request->employee_id;
         $user->save();
-        $roles = Role::orderBy('id', 'DESC')->get();
-        return view('admin.create_account')->with('user',$user)->with('roles',$roles);
+        return redirect()->back();
     }
 
     /**
@@ -105,13 +108,12 @@ class UserMangeController extends Controller
         $user->save();
     }
     public function employees(){
-        $employees = Info::where('MaPB','=', 'KHO')->orderBy('MaNV', 'desc')->paginate(AppConst::DEFAULT_PER_PAGE);
-        $employees->load('user');
+        $employees = Info::where('MaPB','=', 'KHO')->with('user',function($query){
+            $query->where('employee_id', '=', 'hosonhansu.MaNV');
+        })->orderBy('MaNV', 'desc')->paginate(AppConst::DEFAULT_PER_PAGE);
         $totalPage = count($employees);
-        $total = Info::count('MaNV');
         return view('admin.list_employee')
         ->with('employees', $employees)
-        ->with('totalPage', $totalPage)
-        ->with('total', $total);
+        ->with('totalPage', $totalPage);
     }
 }

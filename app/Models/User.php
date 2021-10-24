@@ -61,7 +61,7 @@ class User extends Authenticatable
         return $this->hasMany(Exportbill::class);
     }
     public function info(){
-        return $this->hasOne(Info::class);
+        return $this->hasOne(Info::class,'MaNV');
     }
     public function historyRestoreEquipments(){
         return $this->hasMany(HistoryRestoreEquipment::class);

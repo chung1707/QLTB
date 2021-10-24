@@ -88,4 +88,8 @@ class RestoreEquipmentController extends Controller
         $restoreHistory = HistoryRestoreEquipment::orderBy('id','desc')->with('equipment','user')->paginate(AppConst::DEFAULT_PER_PAGE);
         return view('history.restore_history')->with('restoreHistory', $restoreHistory);
     }
+    public function delete($id){
+        HistoryRestoreEquipment::find($id)->delete();
+        return redirect()->back();
+    }
 }

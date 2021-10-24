@@ -11,8 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Supplier extends Model
 {
     use HasFactory;
-
-    public function equiqments(){
+    public function equipments(){
         return $this->hasMany(Equipment::class);
     }
     public function importbills(){

@@ -40,7 +40,7 @@
                                         <td>{{ $history->locate }}</td>
                                         <td class="table__content">
                                             @if(auth()->user()->role->name == 'admin')
-                                            <form action="" method="post">
+                                            <form action="/restore_history/{{$history->id}}" method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-danger btn-sm" type='submit'>Xóa</button>

@@ -118,4 +118,8 @@ class SellController extends Controller
         ->with('bill', $bill)
         ->with('items', $items);
     }
+    public function delete($id){
+        SellBill::find($id)->delete();
+        return redirect()->back();
+    }
 }

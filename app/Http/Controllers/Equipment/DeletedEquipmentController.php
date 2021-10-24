@@ -16,4 +16,8 @@ class DeletedEquipmentController extends Controller
         ->with('equipments', $equipments)
         ->with('totalEquipment', $totalEquipment);
     }
+    public function delete($id){
+        DeletedEquipment::find($id)->delete();
+        return redirect()->back();
+    }
 }

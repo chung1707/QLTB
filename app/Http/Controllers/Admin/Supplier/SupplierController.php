@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Supplier;
 
-use App\Http\Controllers\Controller;
+use App\Models\AppConst;
 use App\Models\Supplier;
+use App\Models\Equipment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SupplierController extends Controller
 {
@@ -15,7 +17,13 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        //
+        $suppliers = Supplier::orderBy('id', 'desc')->paginate(AppConst::DEFAULT_PER_PAGE);
+        $total = Supplier::count('id');
+        $totalPage = count($suppliers);
+        return view('admin.supplier.list')
+        ->with('suppliers', $suppliers)
+        ->with('total', $total)
+        ->with('totalPage', $totalPage);
     }
 
     /**
@@ -25,7 +33,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.supplier.add');
     }
 
     /**
@@ -47,7 +55,14 @@ class SupplierController extends Controller
      */
     public function show(Supplier $supplier)
     {
-        //
+        $total = $supplier->equipments()->count('id');
+        $mostItem = Equipment::whereHas('supplier', function($query) use($supplier){
+            $query->where('supplier_id','=',$supplier->id);
+        })->orderBy('quantity', 'desc')->first();
+        return view('admin.supplier.details')
+        ->with('supplier', $supplier)
+        ->with('mostItem', $mostItem)
+        ->with('total', $total);
     }
 
     /**
@@ -58,7 +73,7 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        //
+        return view('admin.supplier.edit')->with('supplier', $supplier);
     }
 
     /**

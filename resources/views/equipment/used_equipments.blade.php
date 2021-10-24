@@ -69,13 +69,6 @@
                                         @if($equipment->quantity > 0))
                                         <td><restore-equipment :item="{{ json_encode( $equipment) }}" ></restore-equipment></td>
                                         @endif
-                                        <td class="table__content">
-                                            <form action=" {{route('equipment.destroy',['equipment' => $equipment]) }} " method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm" type='submit'>Xóa</button>
-                                            </form>
-                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -67,11 +67,13 @@
                                         </td>
                                         @endif
                                         <td class="table__content">
-                                            <form action=" {{route('equipment.destroy',['equipment' => $equipment]) }} " method="post">
+                                            @if(auth()->user()->role->name == 'admin')
+                                            <form action="/deleted_equipment/{{$equipment->id}}" method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-danger btn-sm" type='submit'>Xóa</button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

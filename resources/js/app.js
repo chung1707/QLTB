@@ -30,6 +30,10 @@ Vue.component('account-infos', require('./components/admin/user_management/infos
 Vue.component('edit-category', require('./components/admin/category/edit_category.vue').default);
 Vue.component('add-category', require('./components/admin/category/add_category.vue').default);
 
+//equipment
+Vue.component('edit-supplier', require('./components/admin/supplier/edit_supplier.vue').default);
+Vue.component('add-supplier', require('./components/admin/supplier/add_supplier.vue').default);
+
 // import
 Vue.component('import', require('./components/admin/import/import.vue').default);
 

@@ -43,7 +43,7 @@
                                         <td><a  class="btn btn-primary btn-sm" href="/export_history/{{$bill->id}}">Xem chi tiết</a></td>
                                         <td class="table__content">
                                             @if(auth()->user()->role->name == 'admin')
-                                            <form action=" " method="post">
+                                            <form action="/export_history/{{$bill->id}}" method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-danger btn-sm" type='submit'>Xóa</button>

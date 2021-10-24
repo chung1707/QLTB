@@ -84,4 +84,8 @@ class ExportController extends Controller
         ->with('bill', $bill)
         ->with('items', $items);
     }
+    public function delete($id){
+        Exportbill::find($id)->delete();
+        return redirect()->back();
+    }
 }

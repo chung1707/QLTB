@@ -14,7 +14,8 @@
                     <th>Username</th>
                     <th>Quyền</th>
                     <th>Trạng thái</th>
-                    <th colspan="3">Thao tác</th>
+                    <th>Mã nhân viên</th>
+                    <th colspan="2">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +28,11 @@
                     <td>
                     <block-user :user="{{ json_encode($user) }}"></block-user>
                     </td>
-                    <td>Xem chi tiết</td>
+                    @if(isset($user->employee_id))
+                    <td>Tài khoản của nhân viên {{ $user->employee_id }}</td>
+                    @else
+                    <td>Tài khoản chưa có nhân viên</td>
+                    @endif
                     <td>
                         <a class="btn btn-default btn-sm"
                         href="{{ route('users.edit',['user' => $user]) }}">Sửa</a>

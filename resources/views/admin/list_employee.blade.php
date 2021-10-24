@@ -4,7 +4,7 @@
 <h2 style="text-align: center;
     padding: 20px;">Danh sách tài khoản</h2>
 <div class="container-fluid">
-    <p>Tổng số tài khoản: {{ $totalPage }} / {{ $total }}</p>
+    <p>Tổng số tài khoản: {{ $totalPage }}}</p>
     <body>
         <table data-toggle="table">
             <thead>
@@ -30,7 +30,7 @@
                     @if(isset($employee->user->id))
                     <td>{{ $employee->user->username }}</td>
                     @else
-                    <td>Chưa có tài khoản</td>
+                    <td><a class="btn btn-primary btn-icon-split" href="{{ route('users.create', ['employee_id' =>$employee->MaNV ]) }}">Thêm tài khoản</a></td>
                     @endif
                     </tr>
                 @endforeach

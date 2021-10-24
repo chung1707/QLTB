@@ -77,7 +77,7 @@
         </a>
         <div id="supplier" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Danh sách nhà cung cấp</a>
+                <a class="collapse-item" href="/supplier">Danh sách nhà cung cấp</a>
                 <a class="collapse-item" href="register.html">Thêm nhà cung cấp</a>
             </div>
         </div>
@@ -93,8 +93,8 @@
         </a>
         <div id="area" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Danh sách khu vực</a>
-                <a class="collapse-item" href="register.html">Thêm khu vực</a>
+                <a class="collapse-item" href="/area_list">Danh sách khu vực</a>
+                <a class="collapse-item" href="#">Thêm khu vực</a>
             </div>
         </div>
     </li>
@@ -111,7 +111,6 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="/users">Danh sách tài khoản</a>
                 <a class="collapse-item" href="/warehouse/employees">Danh sách nhân viên kho</a>
-                <a class="collapse-item" href="/users/create">Thêm tài khoản</a>
             </div>
         </div>
     </li>
